@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{layouts/layout7}">
+<head>
+   <link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+   <link rel="stylesheet" th:href="@{css/reservesend2.css}" />
+   <script   src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   
+   <script type="text/javascript">
+      window.onload=function(){
+         document.getElementById('run').onclick=function(){
+            if(confirm("예약이체를 처리하시겠습니까?")) 
+            frm.submit();
+         }
+         document.getElementById('cancel').onclick=function(){
+            if(confirm("예약이체를 취소하시겠습니까?\n확인 누를 시 이전 화면으로 돌아갑니다.")) location.href="reservemanage";
+            else return;
+         }
+      }
+   </script>
+   </head>
+<body>
+   <div layout:fragment="content" class="reservesend2-page">
+   <br/><br/>
+      <h3>예약이체정보</h3>
+      <form action="reserve" method="post" name="frm">
+         <table>
+            <tr>
+               <td>예약일시</td>
+               <td>처리상태</td>
+               <td>출금계좌</td>
+               <td>출금계좌 잔액</td>
+               <td>입금은행</td>
+               <td>입금계좌</td>
+               <td>받는 분</td>
+               <td>이체금액(원)</td>
+               <td>수수료(원)</td>
+               <td>작업</td>
+            </tr>
+            <tr>
+               <td th:text="${reserve.transaction_deadline}"></td>
+               <td th:text="${reserve.transaction_status}"></td>
+               <td th:text="${reserve.give_account_number}"></td>
+               <td th:text="${reserve.transaction_balance}"></td>
+               <td th:text="${reserve.take_fin_co_no}"></td>
+               <td th:text="${reserve.take_account_number}"></td>
+               <td th:text="${reserve.user_name}"></td>
+               <td th:text="${reserve.amount}"></td>
+               <td>0</td>
+              <td style="text-align: center;">
+                <input type="button" id="run" value="예약이체 실행">
+                <input type="button" id="cancel" value="취소">
+              </td>
+            </tr>
+         </table>
+         <input type="hidden" th:name="transaction_deadline" th:value="${reserve.transaction_deadline}">
+         <input type="hidden" th:name="amount" th:value="${reserve.amount}">
+         <input type="hidden" th:name="give_account_number" th:value="${reserve.give_account_number}">
+         <input type="hidden" th:name="take_account_number" th:value="${reserve.take_account_number}">
+         <input type="hidden" th:name="remit_no" th:value="${reserve.remit_no}">
+         <input type="hidden" th:name="take_fin_co_no" th:value="${reserve.take_fin_co_no}">
+      </form>
+   </div>
+</body>
+</html>

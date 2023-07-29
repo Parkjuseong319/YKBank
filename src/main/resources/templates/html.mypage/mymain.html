@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+   xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout7}">
+
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+   crossorigin="anonymous">
+<link rel="stylesheet"
+   href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+<body id="mymain-page">
+
+<div layout:fragment="content">
+      
+<!-- 
+chgPwdForm: 비밀번호 변경
+chkForm: 비밀번호 변경 전 본인 확인
+membership: 
+logHistory: ip 기록
+quit: 탈퇴 
+updateInfo: 회원 정보 수정
+ -->
+    <div class="container">
+       
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                    <th><i class="bi bi-calendar2-event"></i>내프로필 </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                     <!-- 회원이름 --> 
+                       <th:block th:text="${userInfo.user_name}"></th:block> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                     <!-- 회원등급 --> 
+                     <th:block th:text="${userInfo.user_level}"></th:block>
+                     <p><a th:href="@{memBenefit}">회원별 우대혜택 보러가기 ></a></p>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <!-- 전화번호  --> 
+                     <!-- <th:block th:text="|010-${#strings.substring(userInfo.user_tel,4,5)}***-${#strings.substring(userInfo.user_tel,9,10)}***|"></th:block> -->
+                     <th:block th:text="${userInfo.user_tel}"></th:block>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                     <!-- email  --> 
+                     <!-- <th:block th:text="|${#strings.substring(userInfo.user_email,0,1)}*****${#strings.substring(userInfo.user_email,8,10)}*****.com|"></th:block> -->
+                     <th:block th:text="${userInfo.user_email}"></th:block>
+                     <!-- 문자열에서 @를 찾아 거기서 부터 2글자를 뽑아낼 수 있는 코드가 필요 -->
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     <!-- 주소 --> 
+                     <!-- <th:block th:text="|010-${#strings.substring(userInfo.user_tel,4,5)}***-${#strings.substring(userInfo.user_tel,9,10)}***|"></th:block> -->
+                     <th:block th:text="${userInfo.user_zipcode}"></th:block><br/>
+                     <th:block th:text="|${userInfo.user_addr}  ${userInfo.user_addr2}|"></th:block>
+                    </td>
+               </tr>
+               <tr>
+                  <td>
+                     <button type="button" class="btn btn-outline-secondary" th:onclick="|location.href='@{myPwdChk}'|">정보 수정</button>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                    <th>내 상품</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+               <td>
+                  <button type="button" class="btn btn-outline-secondary" th:onclick="|location.href='@{myprodtview}'|">내 상품 보러가기</button>
+               </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                    <th>보안설정</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>비밀번호 변경
+                     <button type="button" class="btn btn-outline-secondary" th:onclick="|location.href='@{myChkPwd}'|">변경</button>
+                  </td>
+               </tr>
+               <tr>
+                  <td>회원탈퇴
+                     <button type="button" class="btn btn-outline-secondary" th:onclick="|location.href='@{quit}'|">탈퇴</button>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container">
+        <table class="table">
+            <thead class="table-info">
+                <tr>
+                  <th>로그관리</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                  <td>최종 접속시간  : 
+                     <th:block th:text="${userInfo.last_login_dt}"></th:block>
+                  </td>
+                </tr>
+                <tr>
+                  <td>로그 기록 
+                     <button type="button" class="btn btn-outline-secondary" th:onclick="|location.href='@{myLogList}'|">내 로그기록 확인</button>
+                  </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+    <!-- 부트스트랩 5.3 JS 파일 (jQuery, Popper.js, Bootstrap.js 포함) -->
+   <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"></script>
+</body>
+</html>

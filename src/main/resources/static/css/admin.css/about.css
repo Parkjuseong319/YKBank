@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+body {
+	font-family: 'Muli', sans-serif;
+	background-color: white;
+}
+
+
+.faq-container_about {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+  .about_css {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* 요소들을 가운데 정렬 */
+  }
+  .about_css li {
+    display: inline-block; /* 요소를 인라인 요소로 설정 */
+    margin-right: 10px;
+  }
+  .about_css li:last-child {
+    margin-right: 0;
+  }
+  .about_css li a {
+    display: block;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .about_css li a:hover {
+    background-color: #0071C5;
+    color: #fff;
+  }
+  
+  .about_tag {
+  font-family: 'Noto Sans KR', sans-serif; /* 폰트 설정 */
+  font-size: 13px; /* 폰트 크기 설정 */
+  line-height: 1.5; /* 줄 간격 설정 */
+  color: #333; /* 폰트 색상 설정 */
+  margin: 10px; /* 위아래 여백 설정 */
+}
+
+.about_div {
+  font-family: 'Noto Sans KR', sans-serif; /* 폰트 설정 */
+  font-size: 16px; /* 폰트 크기 설정 */
+  line-height: 1.5; /* 줄 간격 설정 */
+  color: #555; /* 폰트 색상 설정 */
+  margin: 24px 0; /* 위아래 여백 설정 */
+}
+
+.about_div h3 {
+  font-size: 20px; /* 헤더 폰트 크기 설정 */
+  font-weight: bold; /* 헤더 폰트 굵기 설정 */
+  margin-bottom: 12px; /* 헤더 아래 여백 설정 */
+}

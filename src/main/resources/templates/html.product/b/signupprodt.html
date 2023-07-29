@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+
+<body>
+<div layout:fragment="content">
+	<div class="product-basic">
+		<!-- 정보1 : 요약정보 -->
+		<!-- ### 상품명 / 마케팅메시지 ### -->
+		<h2 class="headline">
+			<span>가입 조건을 직접 설계하는</span><b>국민수퍼정기예금(개인)</b>
+		</h2>
+
+		<!-- ### 가입경로 ### -->
+		<dl class="info-data1">
+			<dt>가입가능경로</dt>
+			<dd>영업점</dd>
+		</dl>
+		<!-- ### 금리항목 / 핵심정보 ### -->
+		<div class="info-data3">
+			<dl class="img1">
+				<dt>기간</dt>
+				<dd>최고 36개월</dd>
+			</dl>
+			<dl class="img2">
+				<dt>금액</dt>
+				<dd>1백만원 이상</dd>
+			</dl>
+			<dl class="img3 t1">
+				<dt>최고금리</dt>
+				<dd>
+					최고<span class="info-data2">연 <strong><span>3.25</span>%</strong><span>(36개월)</span></span>
+				</dd>
+				<dd>2023.03.24 기준, 세금공제전, 우대금리포함</dd>
+			</dl>
+		</div>
+		<!-- ### 버튼 ### -->
+		<div class="btnArea">
+			<!--모바일오피스 사이트인 경우 가입버튼 가리기 start if -->
+			<button type="button" class="btn-action" alt="국민수퍼정기예금(개인) 장바구니담기 새창열림" onclick="fnInBascketDtl('DP01000029');">장바구니</button>
+			<button type="button" class="btn-action" title="국민수퍼정기예금(개인) 새창" onclick="counsel();return false;">상담신청</button>
+			<a href='/quics?page=C047865' class="btn-action">영업점 방문예약</a>
+			<!--모바일오피스 사이트인 경우 가입버튼 가리기 start if -->
+		</div>
+		<!-- ### 기준일시 ### -->
+		<div class="inq_btn_area">
+			<p>※ 자세한 내용은 아래 상품안내를 참조하시기 바랍니다.</p>
+		</div>
+	</div>
+	<!-- [상품기본정보] : 계산기 -->
+	<form name="" action="#none" class="product-calculator">
+		<!-- # 계산기 : 예금 #-->
+		<fieldset>
+			<legend>예금&nbsp;계산기</legend>
+			<dl class="form">
+				<!-- # 목적 #-->
+				<dt>목적</dt>
+				<dd>
+					<div id="chkPurpose1Title" class="label-tab1 icon1">
+						<label for="chkPurpose1" class="ic1"> <input type="radio"
+							name="pro_purpose" id="chkPurpose1"
+							onclick="checkRadioPurpose('1');" /> <span>열심히 모은 목돈을 예치할
+								때</span>
+						</label> <label for="chkPurpose2" class="ic2"> <input type="radio"
+							name="pro_purpose" id="chkPurpose2"
+							onclick="checkRadioPurpose('2');" /> <span>매월 일정금액을 저축할 때</span>
+						</label> <label for="chkPurpose3" class="ic3"> <input type="radio"
+							name="pro_purpose" id="chkPurpose3"
+							onclick="checkRadioPurpose('3');" /> <span>목표금액을 모을 때</span>
+						</label>
+					</div>
+				</dd>
+				<!-- # 금액 #-->
+				<dt>금액</dt>
+				<dd>
+					<div class="input-holder">
+						<input type="text" id="uiMesCal1Amt" title="예치금액(단위:원)"
+							class="input" onfocus="fnDisplayMesCal1();"
+							onkeydown="return fnc_input_number(this,event,'1');"
+							onkeyup="keyupCurrencyObj(event, this);"
+							onkeypress="keyNumeric(event);" maxlength="12" /> <span
+							id="uiMesCal1">예치금액</span>
+					</div>
+					<span id="inputCalId1">원을</span>
+					<div class="input-holder w-min1">
+						<input type="text" id="uiMesCal2Amt" title="기간(단위:개월)"
+							class="input" onfocus="fnDisplayMesCal2();"
+							onkeydown="return fnc_input_number(this,event,'1');"
+							onkeyup="keyupCurrencyObj(event, this);"
+							onkeypress="keyNumeric(event);" maxlength="2" /> <span
+							id="uiMesCal2">기간</span>
+					</div>
+					<span>개월 간</span>
+					<div class="input-holder w-min1">
+						<input type="text" id="uiMesCal3Amt" title="금리(단위:%)"
+							class="input" maxlength="4" onfocus="fnDisplayMesCal3();"
+							onkeydown="return fnc_input_number(this,event,'0');" name="rate"
+							title="금리" /> <span id="uiMesCal3">금리</span>
+					</div>
+					<span id="inputCalId2">%의 예금상품에 저축하면?</span>
+				</dd>
+				<dd id="btnCalAmt1" style="display: none">
+					<button type="button" class="btn-sub1" onclick="addDAmt(1000000);"
+						title="예치금액 +100만">+100만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(3000000);"
+						title="예치금액 +300만">+300만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(5000000);"
+						title="예치금액 +500만">+500만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(10000000);"
+						title="예치금액 +1000만">+1000만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(0);"
+						title="예치금액 초기화">초기화</button>
+				</dd>
+				<dd id="btnCalAmt2" style="display: none">
+					<button type="button" class="btn-sub1" onclick="addDAmt(100000);"
+						title="월저축액 +10만">+10만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(300000);"
+						title="월저축액 +30만">+30만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(500000);"
+						title="월저축액 +50만">+50만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(1000000);"
+						title="월저축액 +100만">+100만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(5000000);"
+						title="월저축액 +500만">+500만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(0);"
+						title="월저축액 초기화">초기화</button>
+				</dd>
+				<dd id="btnCalAmt3" style="display: none">
+					<button type="button" class="btn-sub1" onclick="addDAmt(100000);"
+						title="목표금액 +10만">+10만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(300000);"
+						title="목표금액 +30만">+30만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(500000);"
+						title="목표금액 +50만">+50만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(1000000);"
+						title="목표금액 +100만">+100만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(5000000);"
+						title="목표금액 +500만">+500만</button>
+					<button type="button" class="btn-sub1" onclick="addDAmt(0);"
+						title="목표금액 초기화">초기화</button>
+				</dd>
+				<dd id="btnCalTerm1" style="display: none">
+					<button type="button" class="btn-sub1" onclick="modifyTerm(6);"title="기간 6개월">6개월</button>
+					<button type="button" class="btn-sub1" onclick="modifyTerm(12);"title="기간 12개월">12개월</button>
+					<button type="button" class="btn-sub1" onclick="modifyTerm(24);"title="기간 24개월">24개월</button>
+					<button type="button" class="btn-sub1" onclick="modifyTerm(36);"title="기간 36개월">36개월</button>
+				</dd>
+				<dd id="btnCalRate1" style="display: none">
+					<button type="button" class="btn-sub1" onclick="addRate(0.1);"
+						title="금리 +0.1%">+0.1%</button>
+					<button type="button" class="btn-sub1" onclick="addRate(1.0);"
+						title="금리 +1%">+1%</button>
+					<button type="button" class="btn-sub1" onclick="addRate(5.0);"
+						title="금리 +5%">+5%</button>
+					<button type="button" class="btn-sub1" onclick="addRate(0.0);"
+						title="금리 초기화">초기화</button>
+				</dd>
+			</dl>
+			<div class="btnarea">
+				<button type="button" id="resultCalID" class="btn-com c2"
+					onclick="fnResultCal();return false;">결과보기</button>
+			</div>
+		</fieldset>
+		<!-- // -->
+		<!-- # 계산결과 # -->
+		<div class="area-result">
+			<!-- case1 : 열심히 모은 목돈을 예치할 때 -->
+			<p id="area-result-text"></p>
+			<table class="tType01" summary="예금계산결과(구분, 만기금액, 이자)">
+				<caption>예금계산결과</caption>
+				<colgroup>
+					<col width="33%" />
+					<col width="33%" />
+					<col />
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">구분</th>
+						<th scope="col" id="ResultBoxCol01">만기금액</th>
+						<th scope="col">이자</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>비과세</td>
+						<td class="tRight" id="result1">10,200,000원</td>
+						<td class="tRight" id="result2">200,000원</td>
+					</tr>
+					<tr>
+						<td>일반과세 (세후)</td>
+						<td class="tRight" id="result3">10,169,200원</td>
+						<td class="tRight" id="result4">169,200원</td>
+					</tr>
+				</tbody>
+			</table>
+			<ul class="txt-mark1">
+				<li>일반과세의 경우 이자금액의 15.4%가 원천징수되고 비과세 종합저축의 경우 이자소득세가 면제됩니다.</li>
+				<li>비과세종합저축은 가입대상자에 한해 5천만원 한도로 적용됩니다.</li>
+				<li>관련세법에 따른 세율변경 시 변경된 세율이 적용됩니다.</li>
+				<li>본 계산결과는 만기 및 이자금액 계산을 위한 단순 예시로 각 상품별 세제혜택 내용에 따라 달라질 수
+					있습니다.</li>
+			</ul>
+		</div>
+	</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout7}">
+<head>
+<title>비밀번호 확인</title>
+<link rel="stylesheet" th:href="@{css/mypage.css/chgPwd.css}" />
+<link rel="stylesheet" th:href="@{css/mypage.css/popup.css}">
+<body id="chkPwdForQuit-page">
+	<div layout:fragment="content">
+
+<script type="text/javascript">
+
+window.onload=()=>{
+	var re=[[${result}]];
+	
+	if(!re){	// 입력 비밀번호와 회원의 비밀번호가 일치하지 않는 경우	
+		showModal("비밀번호가 일치하지 않습니다.");
+		
+	}else {	// 일치하는 경우
+		showModal2("정말 탈퇴하시겠습니까 ?");
+	}
+}
+
+function showModal(message) {
+	var modal = document.createElement("div");
+	modal.className = "modal";
+	modal.innerHTML = '<div class="modal-content">' +
+	'<div class="modal-header">' +
+	'<span class="close">&times;</span>' +
+	'</div>' +
+	'<div class="modal-body">' +
+	'<p>' + message + '</p>' +
+	'<button id="user_close_btn">닫기</button>'+
+	'</div>' +
+	'</div>';
+	
+	var closeButton = modal.querySelector(".close");
+	closeButton.onclick = function() {
+		modal.style.display = "none";
+		history.back();
+	}
+	
+	var userCloseBtn=modal.querySelector("#user_close_btn");
+	userCloseBtn.onclick=function(){
+		modal.style.display="none";
+		history.back();
+	}
+	
+	document.body.appendChild(modal);
+	modal.style.display = "block";
+}
+
+function showModal2(message) {
+	var modal = document.createElement("div");
+	modal.className = "modal";
+	modal.innerHTML = '<div class="modal-content">' +
+	'<div class="modal-header">' +
+	'<span class="close">&times;</span>' +
+	'</div>' +
+	'<div class="modal-body">' +
+	'<p>' + message + '</p>' +
+	'<button id="quit_btn">탈퇴</button>'+
+	'<button id="cancel_btn">취소</button>'+
+	'</div>' +
+	'</div>';
+	
+	var closeButton = modal.querySelector(".close");
+	closeButton.onclick = function() {
+		modal.style.display = "none";
+		history.back();
+	}
+	
+	var userCloseBtn=modal.querySelector("#cancel_btn");
+	userCloseBtn.onclick=function(){
+		modal.style.display="none";
+		history.back();
+	}
+
+	var quitBtn=modal.querySelector("#quit_btn");
+	quitBtn.onclick=function(){
+		modal.style.display="none";
+		location.href="quitSuccess";
+	}
+	
+	document.body.appendChild(modal);
+	modal.style.display = "block";
+}
+
+</script>
+	
+		<div class="container_chgPwd">
+			<h3>비밀번호 확인</h3><br/>
+			<!-- th:object로 컨트롤러에서 bean 객체를 전달받음 -->
+			<form th:action="@{/chkPwdForQuit}" method="post" id="frm">
+			<label for="user_name">비밀번호:</label>
+ 		    <input type="password" name="user_passwd">
+
+
+			<input type="submit" value="입력" class="btn" id="btnCheck">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

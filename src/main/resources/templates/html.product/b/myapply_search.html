@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+<body>
+<div layout:fragment="content">
+<h2>대출 진행 현황</h2>
+<table>
+	<tr>
+		<th>신청일자</th><th>상품명</th><th>진행상태</th><th>신청유효기간</th>
+	</tr>
+	<th:block th:if="">	
+	<tr th:each="">
+		<td>일자 표시</td>
+		<td>상품명란</td>
+		<td>진행상태</td>
+		<td>유효기간 표시</td>
+		
+	</tr>
+	</th:block>
+	<th:block th:if="">
+	<tr>
+		<td colspan="4">조회가능한 대출이 없습니다.</td>
+	</tr>
+	</th:block>
+</table>
+</div>
+</body>
+</html>

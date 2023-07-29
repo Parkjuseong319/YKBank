@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+<th:block th:include="fragments/header"></th:block>
+<div>
+	<h2>### 고객님의 등급은 @@@입니다</h2>
+</div>
+<hr/>
+<div align="center">
+<table border="1" summary="우대서비스항목, Platinum, Diamond, Gold, Emerald, Premium">
+	<caption>yk은행에서 제공하는 서비스 상세</caption>
+	<colgroup>
+		<col width="30%"/>
+		<col span="4"/>
+	</colgroup>
+	<thead>
+		<tr>
+			<th scope="col" rowspan="2">우대서비스 항목</th>
+			<th scope="colgroup" colspan="4">yk가족 우대서비스</th>
+		</tr>
+		<tr>
+			<th scope="col">Prestige</th>
+			<th scope="col">Honor</th>
+			<th scope="col">Royal</th>
+			<th scope="col">Family</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>텔레뱅킹수수료</td>
+			<td rowspan="9"><strong>면제</strong></td>
+			<td rowspan="9"><strong>월별<br />총 30회<br />면제</strong></td>
+			<td><strong>월별 총 10회 면제</strong></td>
+			<td><strong>월별 총 5회 면제</strong></td>
+		</tr>
+		<tr>
+			<td>통장/증서 재발행 수수료</td>
+			<td rowspan="5"><strong>월별 총 20회 면제</strong></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>현금카드 발행/재발행 수수료</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>제증명/제사고 처리수수료</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>자기앞수표발행수수료</td>
+			<td rowspan="2"><strong>월별 총 10회 면제</strong></td>
+		</tr>
+		<tr>
+			<td style="border-right:1px solid #e5e5e5 !important">당행 자동화기기 이용수수료(자행환)</td>
+		</tr>
+		<tr>
+			<td>당행 자동화기기 이용수수료(타행환)</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>OTP발생기(일반형) 발급수수료</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>창구거래수수료 외 6개</td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>창구송금수수료(타행환)</td>
+			<td><strong>월별 총 50회 면제</strong></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>환전, 여행자수표 환율우대</td>
+			<td><strong>고객부담<br />30% 감면</strong></td>
+			<td><strong>고객부담<br />30% 감면</strong></td>
+			<td><strong>고객부담<br />30% 감면</strong></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>개인인터넷뱅킹<br />해외 당발송금 수수료</td>
+			<td><strong>면제</strong></td>
+			<td><strong>면제</strong></td>
+			<td><strong>면제</strong></td>
+			<td><strong>면제</strong></td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<th:block th:include="fragments/footer"></th:block>
+</body>
+</html>

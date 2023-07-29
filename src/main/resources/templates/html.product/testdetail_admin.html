@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+** 상품 정보 **<br/>
+<form action="/update" method="post" th:object="${datas}">
+상품 코드 : <input type="text" name="fin_prdt_code" readonly="readonly" th:field="*{fin_prdt_code}"><br/>
+금융회사명 : <input type="text" name="kor_co_nm" value="ykbank" readonly="readonly"><br/>
+상품 유형 : <input type="text" name="fin_prdt_type" th:field="*{fin_prdt_code}"><br/>
+상 품 명 : <input type="text" name="fin_prdt_nm" th:field="*{fin_prdt_nm}"><br/>
+최고 한도 : <input type="text" name="max_limit"  th:field="*{max_limit}"><br/>
+생성자 : <input type="text" name="created_user_id" th:field="*{created_user_id}" readonly="readonly"><br/>
+생성일 : <input type="text" name="created_user_id" th:field="*{created_dt}" readonly="readonly"><br/>
+변경자 : <input type="text" name="created_user_id" th:field="*{updated_user_id}"readonly="readonly"><br/>
+변경일 : <input type="text" name="created_user_id" th:field="*{updated_dt}"readonly="readonly"><br/>
+상품상세설명 : <input type="text" name="prodt_detail" th:field="*{prodt_detail}"><br/>
+<br/>
+<input type="submit" value="수정"/>
+</form>
+</body>
+</html>

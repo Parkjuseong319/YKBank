@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout6}">
+<head>
+<head>
+	<title>게시판 목록</title>
+	<link rel="stylesheet" th:href="@{css/customer.css/checkmail.css}" />
+</head>
+<body id="event-page">
+	<div layout:fragment="content" >
+
+		<div class="container_next" >
+			<h1>이벤트</h1>
+				<div th:if="${session.user_level} == 'admin' " >
+					<input class="button_1" type="button" th:onclick="|location.href='@{eventinsert}'|" value="자료입력">
+				</div>
+			<table border= "1" >
+				<thead>
+					<tr>
+						<th>제목</th>
+						<th>내용</th>
+						<th>작성일</th>
+					</tr>
+				</thead>
+				
+				<tbody th:if="${datas != null}">
+					<!-- 게시물 목록을 동적으로 생성하는 부분 -->
+					<tr th:each="datas : ${datas}">
+						<td><a th:text="${datas.event_title}" th:href="@{eventDetail(no=${datas.event_no})}"></a></td>
+						<td th:text="|${#strings.substring(datas.event_content,0,10)} ... |"></td>
+						<td th:text="${datas.event_date}"></td>
+					</tr>
+				</tbody>
+				
+				<tbody th:if="${datas.size == 0}">
+					<tr>
+						<td colspan="3" th:text="|이벤트 없음|"></td>
+					</tr>
+				</tbody>
+				
+			</table>
+				<form class="search-form" th:action="@{/eventSearch}" method="get">
+					<label for="search-text">제목 검색:</label>
+					<input type="text" id="searchValue" name="searchValue">
+					<input type="submit" value="Search">
+				</form>
+				<!-- 
+				<ul class="pagination">
+					<li><a href="#">«</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+				 -->
+			</div>
+		</div>
+	</body>
+</html>

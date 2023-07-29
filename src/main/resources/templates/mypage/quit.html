@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang ="en" xmlns:th="http:/www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:include="fragments/head"></th:block>
+	<body>
+		<div>
+			<th:block th:include="fragments/header"></th:block>
+			탈퇴하면 놓치는 혜택 ~~~~
+			<form action="/quit">
+			<input type="submit" value="회원탈퇴">
+			<input type="button" onclick="history.back()">
+			</form>
+			<th:block th:include="fragments/footer"></th:block>
+		</div>
+	</body>
+</html>

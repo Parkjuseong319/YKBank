@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+<body>
+<div layout:fragment="content">
+	<div id="b031064">
+		<!-- Title 시작 -->
+		<div class="toparea">
+			<h1 class="h1_title">신규결과/내역 조회</h1>
+		</div>
+		<h2 class="blind"></h2>
+		<!-- Title 끝 -->
+	</div>
+
+	<div id="b030005">
+		<div id="errorDiv"
+			style="position: relative; z-index: 1; display: none;">
+			<div id="errorDivIn" class="notiArea error">
+				<strong>고객님 죄송합니다.</strong>
+				<p id="errMsg" class="comment"></p>
+				<input type="hidden" name="errorCode" id="errorCode" value="" /> <input
+					type="hidden" name="pageNm" id="pageNm" value="신규결과/내역 조회" /> <input
+					type="hidden" name="pageCd" id="pageCd" value="C016614" />
+				<p id="linkText" class="comment"></p>
+				<p id="errorTransfer" style="display: none;">
+					<strong id="goPage"> 화면으로 이동합니다.</strong>
+				</p>
+				<ul class="list_type1" id="errUl">
+					<li>응답코드 <span class="point_blue" id="errCd">()</span></li>
+				</ul>
+				<div class="notiCall">
+					<span class="btn small errClose" id="errorClose"
+						style="display: none;"><a href="javascript:window.close();">닫기</a></span>
+					대표전화&nbsp;&nbsp;&nbsp;<em>1588-9999</em><span>|</span><em>1599-9999</em><span>|</span><em>1644-9999</em>
+				</div>
+			</div>
+			<div class="btnArea" id="errorTransferBtn" style="display: none;">
+				<span class="btn large action"><a href="">확인</a></span>
+			</div>
+			<script type="text/javascript">
+				//<![CDATA[  $(function(){    if($.browser.msie){      var tempObj    = $("#errorTransferBtn").find("a");      var strTempUrl = tempObj.attr("href");      tempObj.attr("href", caq.util.getEncodeURI(strTempUrl));    }  });  //]]>
+			</script>
+		</div>
+
+		<form method="post" name="IBF" id="IBF" action="">
+			<input type="hidden" name="주계좌번호" title="주계좌번호" /> <input
+				type="hidden" name="NEXT_TAG_PAGE" value="" title="NEXT_TAG_PAGE" />
+
+
+			<div class="box_type1">
+				<ul class="list_type1">
+					<li>예금 신규결과/내역입니다.</li>
+					<li>KB국민재형저축 가입처리현황은 '재형저축신규조회'화면에서 확인가능합니다.</li>
+				</ul>
+			</div>
+
+
+			<table
+				summary="이 표는 예금 신규결과 상세내용 정보를 제공하며 신규일자, 신규계좌번호, 신규계좌종류, 출금계좌번호, 신규금액 으로 구성되어 있습니다."
+				class="tType01">
+				<caption>예금 신규결과 상세내용</caption>
+				<colgroup>
+					<col width="14%" />
+					<col width="16%" />
+					<col width="*" />
+					<col width="16%" />
+					<col width="14%" />
+				</colgroup>
+				<thead>
+					<tr>
+						<th scope="col">신규일자</th>
+						<th scope="col">신규계좌번호</th>
+						<th scope="col">신규계좌종류</th>
+						<th scope="col">출금계좌번호</th>
+						<th scope="col" class="nbr">신규금액</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="5" class="nbr">조회하실 내역이 없습니다.</td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+		</form>
+
+		<div id="paging" class="paging"></div>
+
+		<script type="text/javascript">
+			//<![CDATA[
+
+			function gotoPage(strNextTagPage) {
+				var f = document.IBF;
+				f.elements['NEXT_TAG_PAGE'].value = strNextTagPage;
+				f.action = "/quics?page=C016614";
+
+				CAR_doAjaxCC(f);
+				return false;
+			}
+			//]]>
+		</script>
+	</div>
+	</div>
+</body>
+</html>

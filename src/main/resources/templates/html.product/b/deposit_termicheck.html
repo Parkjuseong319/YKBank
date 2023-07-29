@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+<body>
+<div layout:fragment="content">
+	<div class="box_type1">
+		<ul class="list_type1">
+			<li>입출금이자유로운예금 해지 시 당행 본인계좌로 입금되며 입금받을 계좌번호가 없거나 각종 자동이체 및 카드
+				결제계좌 등 연결계좌로 사용되고 있을 경우 해지가 제한됩니다.(창구를 통한 해지는 가능합니다.)</li>
+		</ul>
+	</div>
+	<form action="terminationinfocheck.html">
+	<table class="tType02" summary="계좌정보">
+		<colgroup>
+			<col width="20%" />
+			<col />
+		</colgroup>
+		<tbody>
+			<tr class="first">
+				<th scope="row">해지계좌번호</th>
+				<td>13215-121-5484</td>
+			</tr>
+			<tr>
+				<th scope="row">해지계좌명</th>
+				<td>YK통장</td>
+			</tr>
+			<tr>
+				<th scope="row"><label for="해약계좌비밀번호">해지계좌비밀번호</label></th>
+				<td><input type="password" title="해약계좌비밀번호" id="해약계좌비밀번호"
+					class="input" name="해약계좌비밀번호" maxlength="4"
+					onkeypress="filterInputData('[0-9]' , event);"
+					style="ime-mode: disabled" />
+					<div class="rad_input">
+						
+						
+					</div>
+					<div class="keypadWrap" style="position: relative;">
+						<div id="DIV_KEYPAD_1"
+							style="display: none; position: absolute; top: 0px; left: 200px; z-index: 9999;">
+							<div id="divKeypad7e1f1efbfd57innerDIV"></div>
+						</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td>
+					입금 계좌번호
+				</td>
+				<td>
+					<select>
+						<option>------전체------</option>
+						<option>사용자의 다른 계좌 표시</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="해지"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+	</div>
+</body>
+</html>

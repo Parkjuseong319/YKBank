@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+
+<body> 
+	<div layout:fragment="content">
+	<!-- 	 -->
+		    <div class="preloader">
+		        <div class="preloader-inner">
+		            <div class="preloader-icon">
+		                <span></span>
+		                <span></span>
+		            </div>
+		        </div>
+		    </div>
+	    <!-- /End Preloader -->
+
+	    <section class="hero-area overlay">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-10 offset-lg-1 col-md-12 col-12">
+	                    <div class="hero-text text-center">
+	                        <!-- Start Hero Text -->
+	                        <div class="section-heading">
+	                            <h2 class="wow fadeInUp" data-wow-delay=".3s">이체수수료 무료 서비스 시행</h2>
+	                        </div>
+	                        <!-- End Search Form -->
+	
+	
+	                                
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	    <!-- ###################### End Hero Area###################### -->
+	
+	    <!-- Start Categories Area -->
+	    <section class="categories">
+	        <div class="container">
+	            <div class="cat-inner">
+	                <div class="row">
+	                    <div class="col-12 p-0">
+	                        <div class="category-slider">
+	                            <!-- Start Single Category -->
+	                            <a th:href="@{prodtlist}" class="single-cat">
+	                                <div class="icon">
+	                                    <img src="images/categories/금융.png" alt="#">
+	                                </div>
+	                                <h3>적금</h3>
+	                            </a>
+	                            <!-- End Single Category -->
+	                            <!-- Start Single Category -->
+	                            <a th:href="@{directsend1}" class="single-cat">
+	                                <div class="icon">
+	                                    <img src="images/categories/출금.png" alt="#">
+	                                </div>
+	                                <h3>출금</h3>
+	
+	                            </a>
+	                            <!-- End Single Category -->
+	                            <!-- Start Single Category -->
+	                            <a th:href="@{directsend1}" class="single-cat">
+	                                <div class="icon">
+	                                    <img src="images/categories/matrimony.svg" alt="#">
+	                                </div>
+	                                <h3>이체</h3>
+	                            </a>
+	                            <!-- End Single Category -->
+	                            <!-- Start Single Category -->
+	                            <a th:href="@{mailconsult}" class="single-cat">
+	                                <div class="icon">
+	                                    <img src="images/categories/furniture.svg" alt="#">
+	                                </div>
+	                                <h3>상담</h3>
+	
+	                            </a>
+	                            <!-- End Single Category -->
+	                            <!-- Start Single Category -->
+	                            <a th:href="@{login}" class="single-cat">                  
+	                                <div class="icon">
+	                                    <img src="images/categories/jobs.svg" alt="#">
+	                                </div>
+	                                <h3>로그인</h3>
+	                            </a>
+	                            <!-- End Single Category -->
+	                            <!-- Start Single Category -->
+	                            <a th:href="@{mymain}" class="single-cat">
+	                                <div class="icon">
+	                                    <img src="images/categories/real-estate.svg" alt="#">
+	                                </div>
+	                                
+	                                <h3>마이페이지</h3>
+	
+	                            </a>
+	                            <!-- End Single Category -->
+	                            <!-- Start Single Category -->
+	                             <a th:href="@{notification}" class="single-cat">
+	                                <div class="icon">
+	                                    <img src="images/categories/laptop.svg" alt="#">
+	                                </div>
+	                                <h3>공지사항</h3>
+	         
+	                            </a>
+	                            
+	                            <!-- End Single Category -->
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	        <!--########################################################-->
+	        <!--################아이콘 카테고리+하이퍼링크######################-->
+	    <!-- /End Categories Area -->
+	        <!--########################################################-->
+	    <!-- Start Items Grid Area -->
+	    <section class="items-grid section custom-padding">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-12">
+	                    <div class="section-title">
+	                        <h2 class="wow fadeInUp" data-wow-delay=".4s">추천 상품</h2>
+	                      
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="single-head">
+	                <div class="row">
+	                    <div class="col-lg-4 col-md-6 col-12">
+	                        <!-- Start Single Grid -->
+	                        <div class="single-grid wow fadeInUp" data-wow-delay=".2s">
+	                            <div class="image">
+	                               <a th:href="@{prodtlist}" class="thumbnail"><img src="images/items-grid/img1.png" alt="#"></a>
+	                            </div>
+	                            <div class="content">
+	                                <div class="top-content">
+	                                    <a th:href="@{prodtlist}" class="tag">최대 연이율 5%</a>
+	                                    <h3 class="title">
+	                                       <a th:href="@{prodtlist}" >적금상품</a>
+	                                    </h3>
+	                                    <p class="reco">추천도</p>
+	                                    <ul class="rating">
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	 
+	                                    </ul>
+	                                    <ul class="info-list">
+	                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> Acorn, Seoul</a></li>
+	                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i> 1년만기</a></li>
+	                                    </ul>
+	                                </div>
+	
+	                            </div>
+	                        </div>
+	                        <!-- End Single Grid -->
+	                    </div>
+	                    <div class="col-lg-4 col-md-6 col-12">
+	                        <!-- Start Single Grid -->
+	                        <div class="single-grid wow fadeInUp" data-wow-delay=".4s">
+	                            <div class="image">
+	                                 <a th:href="@{mailconsult}" class="thumbnail"><img src="images/items-grid/img2.png" alt="#"></a>
+	                               
+	                            </div>
+	                            <div class="content">
+	                                <div class="top-content">
+	                                   <a th:href="@{mailconsult}" class="tag">무료 상품</a>
+	                                    <h3 class="title">
+	                                       <a th:href="@{mailconsult}" >계좌 개설상담</a>
+	                                    </h3>
+	                                    <p class="reco">추천도</p>
+	                                    <ul class="rating">
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                    </ul>
+	                                    <ul class="info-list">
+	                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i> 전국, 어디서나</a></li>
+	                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i>24시간</a></li>
+	                                    </ul>
+	                                </div>
+	
+	                            </div>
+	                        </div>
+	                       
+	                        <!-- End Single Grid -->
+	                    </div>
+	                    <div class="col-lg-4 col-md-6 col-12">
+	                        <!-- Start Single Grid -->
+	                        <div class="single-grid wow fadeInUp" data-wow-delay=".6s">
+	                            <div class="image">
+	                                 <a th:href="@{loanlist}" class="thumbnail"><img src="images/items-grid/img3.png" alt="#"></a>
+	                              
+	                            </div>
+	                            <div class="content">
+	                                <div class="top-content">                                  
+	                                   <a th:href="@{loanlist}" class="tag">최저 금리 5%</a>
+	                                    <h3 class="title">
+	                                     <a th:href="@{loanlist}" >대출상품</a>
+	                                    </h3>
+	                                    <p class="reco">추천도</p>
+	                                    <ul class="rating">
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                        <li><i class="lni lni-star-filled"></i></li>
+	                                    </ul>
+	                                    <ul class="info-list">
+	                                        <li><a href="javascript:void(0)"><i class="lni lni-map-marker"></i>가까운 창구 문의</a></li>
+	                                        <li><a href="javascript:void(0)"><i class="lni lni-timer"></i>영업시간 내</a></li>
+	                                    </ul>
+	                                </div>
+	
+	                            </div>
+	                        </div>
+	                        <!-- End Single Grid -->
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	    <!-- /End Items Grid Area -->
+	
+	    
+	
+	    <!-- Start Call Action Area -->
+	    <section class="call-action overlay section">
+	        <div class="container">
+	            <div class="row ">
+	                <div class="col-lg-8 offset-lg-2 col-12">
+	                    <div class="inner">
+	                        <div class="content">
+	                            <h2 class="wow fadeInUp" data-wow-delay=".4s">현재 진행중인 이벤트를 확인해보세요<br>
+	                                Check it out!</h2>
+	                            <p class="wow fadeInUp" data-wow-delay=".6s">아래의 버튼을 눌러 이벤트 페이지로 오세요</p>
+	                            <div class="button wow fadeInUp" data-wow-delay=".8s">
+	                        <a th:href="@{event}" class="btn">이벤트 페이지 가기</a>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+	    <!-- End Call Action Area -->
+	
+	    <!-- Start How Works Area -->
+	    <section class="how-works section" style="background-color: #fff;">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-12">
+	                    <div class="section-title">
+	                        <h2 class="wow fadeInUp" data-wow-delay=".4s">금융사기 방지</h2>
+	                        <p class="wow fadeInUp" data-wow-delay=".6s">아래의 팁을 따라 사기를 방지하세요</p>
+	                    </div>
+	                </div>
+	            </div>
+	            <div class="row">
+	                <div class="col-lg-4 col-md-4 col-12">
+	                    <!-- Start Single Work -->
+	                    <div class="single-work wow fadeInUp" data-wow-delay=".2s">
+	                        <span class="serial">Tip1</span>
+	                        <h3>메일</h3>
+	                        <p>은행 웹사이트나 이메일이 실제인지 확인하기<br/>의심스러운 메시지를 받은 경우, 은행과 직접 연락하여 확인하세요.</p>
+	                    </div>
+	                    <!-- End Single Work -->
+	                </div>
+	                <div class="col-lg-4 col-md-4 col-12">
+	                    <!-- Start Single Work -->
+	                    <div class="single-work wow fadeInUp" data-wow-delay=".4s">
+	                        <span class="serial">Tip2</span>
+	                        <h3>개인정보</h3>
+	                        <p>비밀번호를 일반적인 단어나 개인 정보와 관련된 것으로 설정 금지<br/>OTP보안 등 강화된 로그인 인증사용</p>
+	                    </div>
+	                    <!-- End Single Work -->
+	                </div>
+	                <div class="col-lg-4 col-md-4 col-12">
+	                    <!-- Start Single Work -->
+	                    <div class="single-work wow fadeInUp" data-wow-delay=".6s">
+	                        <span class="serial">Tip3</span>
+	                        <h3>모니터링</h3>
+	                        <p>은행 계좌 및 카드 거래 내역을 모니터링하기.<br/> 거래 내역에서 이상한 항목,활동이 발견되면 은행에 알리기!</p>
+	                    </div>
+	                    <!-- End Single Work -->
+	                </div>
+	            </div>
+	        </div>
+	    </section>
+    
+
+    <!-- ========================= scroll-top ========================= -->
+    <a href="#" class="scroll-top btn-hover">
+        <i class="lni lni-chevron-up"></i>
+    </a>
+
+    <!-- ========================= JS here ========================= -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/tiny-slider.js"></script>
+    <script src="js/glightbox.min.js"></script>
+       <script src="js/main.js"></script>
+    <script type="text/javascript">
+    
+        //========= Category Slider 
+        tns({
+            container: '.category-slider',
+            items: 3,
+            slideBy: 'page',
+            autoplay: false,
+            mouseDrag: true,
+            gutter: 0,
+            nav: false,
+            controls: true,
+            controlsText: ['<i class="lni lni-chevron-left"></i>', '<i class="lni lni-chevron-right"></i>'],
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                540: {
+                    items: 2,
+                },
+                768: {
+                    items: 4,
+                },
+                992: {
+                    items: 5,
+                },
+                1170: {
+                    items: 6,
+                }
+            }
+        });
+    </script>
+    </div>
+</body>
+</html>

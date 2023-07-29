@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+<head>
+<head>
+	<title>공지사항</title>
+	<link rel="stylesheet" th:href="@{css/customer.css/checkmail.css}" />
+</head>
+<body>
+	<div layout:fragment="content" >
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/>
+		<div class="container_next" >
+			<h1>공지사항 수정</h1>
+			<!-- 
+			<form th:action="@{updateProcess(no=${notification.notification_no})}" method="post">
+			 -->
+			<form th:action="@{updateProcess}" method="post">
+			<table border= "1" >
+				<thead>
+					<tr>
+						<th>제목</th>
+						<th>
+							<input name="notification_title" type="text" th:value="${notification.notification_title}">
+						</th>
+						<!-- 
+						<th th:text="${notification.notification_title}"></th>
+						 -->
+					</tr>
+				</thead>
+				
+				<tbody>
+					<!-- 게시물 목록을 동적으로 생성하는 부분 -->
+					<tr>
+						<!-- <td th:text="${notification.notification_content}"></td> -->
+						<td colspan="2">
+							<textarea name="notification_content" th:text="${notification.notification_content}"></textarea>
+							<input type="hidden" name="notification_no" th:value="${notification.notification_no}">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="submit" value="수정"/>
+							<input type="button" value="취소" onclick="history.back()"/>
+						</td>
+					</tr>
+				</tbody>
+				
+			</table>
+			</form>
+				<form class="search-form" action="#" method="get">
+					<label for="search-text">Search:</label>
+					<input type="text" id="search-text" name="search-text">
+					<input type="submit" value="Search">
+				</form>
+				<ul class="pagination">
+					<li><a href="#">«</a></li>
+					<li><a href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">»</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

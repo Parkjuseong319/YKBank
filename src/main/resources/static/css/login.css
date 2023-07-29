@@ -1,0 +1,75 @@
+.container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.login-section__item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-right: 20px;
+  width: calc((70% - 60px) / 3); /* 전체 폭을 3으로 나누어 각 섹션의 폭을 계산 */
+  display: inline-block;
+  vertical-align: top; /* 세로 정렬을 top으로 설정하여 같은 높이에서 시작 */
+}
+
+.login-section__title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.form-style {
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #f0f0f0;
+}
+
+.link {
+  display: block;
+  margin-top: 10px;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #0069d9;
+}
+
+/* .btn-primary { */
+/*   background-color: #007bff; */
+/*   border-color: #007bff; */
+/* } */
+/* .btn-primary:hover { */
+/*   background-color: #0069d9; */
+/*   border-color: #0062cc; */
+}
+.btn-login {
+  background-color: #007bff;
+  color: #fff;
+  
+}
+
+.login-btn-wrapper button {
+  background-color: #007bff;
+  color: #fff;
+ width: 290px;
+}
+.login-btn-wrapper button:hover {
+  background-color: #0069d9;
+}

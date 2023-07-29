@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout7}">
+<head>
+<head>
+	<title>YKBBANK</title>
+	<link rel="stylesheet" th:href="@{css/customer.css/checkmail.css}" />
+	<link rel="stylesheet" th:href="@{css/paging.css}" />
+</head>
+<body id="loghistory-page">
+   <div layout:fragment="content" >
+      <div class="container_next" >
+         <h1>회원 로그인 기록</h1>
+         <table border= "1" >
+            <thead>
+               <tr>
+                  <th>일시</th>
+                  <th>로그인 IP</th>
+               </tr>
+            </thead>
+            <tbody>
+               <!-- 목록을 동적으로 생성하는 부분 -->
+               
+               <tr th:each="data : ${datas}">
+                  <td th:text="${data.history_login_dt}"></td>
+                  <td th:text="${data.history_ip_addr}"></td>
+               </tr>
+            </tbody>   
+         </table>
+      	   <table class="paging">
+                 <tr style="text-align: center">
+                   <td colspan="2">
+                     <div class="pagination">
+                     <a th:class="${page == 1} ? disabled : ''" th:href="@{myLogList(page=1)}">&laquo;</a>
+                     <a th:class="${page == 1} ? disabled : ''" th:href="@{myLogList(page=${page - 1})}">&lt;</a>
+                     <a th:each="psu : ${#numbers.sequence(page > 2 ? page - 2 : 1, page < pagesu - 2 ? page + 2 : pagesu)}"
+                        th:class="${psu == page} ? active : ''"
+                        th:href="@{myLogList(page=${psu})}"
+                        th:text="${psu}"></a>
+                     <a th:class="${page == pagesu} ? disabled : ''" th:href="@{myLogList(page=${page + 1})}">&gt;</a>
+                     <a th:class="${page == pagesu} ? disabled : ''" th:href="@{myLogList(page=${pagesu})}">&raquo;</a>
+                     </div>
+                   </td>
+                 </tr>
+            </table>
+         </div>
+      </div>
+   </body>
+</html>

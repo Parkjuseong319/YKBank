@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<body>
+	<div layout:fragment="content">
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+		자동이체정보<br />
+		<table border="1">
+			<tr style="text-align: center;">
+				<th>출금계좌</th>
+				<th>입금은행</th>
+				<th>입금계좌</th>
+				<th>받는 분</th>
+				<th>이체금액(원)</th>
+				<th>이체기간</th>
+				<th>이체주기</th>
+			</tr>
+			<tr><!-- thymeleaf문법으로 값을 넣을것. -->
+				<td>110-322-587490</td>
+				<td>기업</td>
+				<td>01050963341</td>
+				<td>서정욱</td>
+				<td>100</td>
+				<td>2023.03.27~2024.03.26</td>
+				<td>1개월</td>
+			</tr>
+		</table>
+		<!-- 사용 안할 수도 있다. -->
+		<table>
+			<tr>
+				<td>보안매체 정보입력<br /> 여기에 관련해서는 OTP인증을통해서 진행되는 링크가 필요함.
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

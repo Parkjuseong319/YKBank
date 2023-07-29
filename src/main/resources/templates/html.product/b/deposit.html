@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+<body>
+<div layout:fragment="content">
+	<!-- 예금 상품 찾기 -->
+	<div class="" id="">
+		<h2 class="vn">개인뱅킹 서비스 메뉴</h2>
+		<li class="ca"><a href=''>금융상품</a>
+			<div class="">
+				<ul>
+					<li class=""><a href=''>예금</a>
+						<div>
+							<ul>
+								<li><a href='signupprodt.html'>예금 상품/가입</a></li>
+								<li><a href='deposit_check.html'>예금 조회/해지</a>
+									<div>
+										<ul>
+											<li><a href=''>신규결과/내역 조회</a></li>
+											<li><a href='deposit_termination.html'>예금해지</a></li>
+											<li><a href=''>해지결과/내역 조회</a></li>
+										</ul>
+									</div></li>
+								<li><a href='depositguide.html'>예금 가이드</a></li>
+							</ul>
+						</div></li>
+				</ul>
+			</div>
+			</li>
+		</div>
+		<!-- 여기까지가 좌측으로 빠지는 메뉴들 -->
+
+		<fieldset>
+			<legend>상품검색</legend>
+
+			<table class="tbl-data1 ui-row1" summary="상품검색(가입방법, 판매여부, 상품명 등)">
+				<caption>상품상세검색</caption>
+				<colgroup>
+					<col width="100" />
+					<col />
+				</colgroup>
+				<tbody id="r5">
+					<!-- 항목하나 -->
+					<tr>
+						<th scope="row"><label for="검색상품명">상품명</label></th>
+						<td><input type="text" maxlength="50" value='' name="브랜드상품명" class="input w-per100" id="검색상품명" /></td>
+					</tr>
+				</tbody>
+				<tbody id="r3">
+					<!-- 상품유형코드 -->
+					<tr>
+						<th scope="row"><span class="label">상품유형</span></th>
+						<td>
+							<div class="label-check1">
+								<input type="radio" name="상품유형코드" value="00000" id="product01" /><label for="product01">전체</label> 
+								<input type="radio" name="상품유형코드" value="00028" id="product02" checked="checked" /><label for="product02">정기예금</label> 
+								<input type="radio" name="상품유형코드"value="00030" id="product03" /><label for="product03">KB리더스정기예금</label>
+								<input type="radio" name="상품유형코드" value="00029" id="product04" /><label for="product04">시장성예금</label>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody id="r2">
+					<tr>
+						<th scope="row"><span class="label">가입방법</span></th>
+						<td>
+							<div class="label-check1">
+								<input type="radio" name="가입방법코드" value="00" id="method0"checked="checked" /><label for="method0">전체</label> 
+								<input type="radio" name="가입방법코드" value="01" id="method1" /><label for="method1">인터넷뱅킹</label> 
+								<input type="radio" name="가입방법코드" value="02" id="method2" /><label for="method2">스타뱅킹</label> 
+								<input type="radio" name="가입방법코드" value="03" id="method3" /><label for="method3">리브 Next</label> 
+								<input type="radio" name="가입방법코드"value="04" id="method4" /><label for="method4">영업점</label>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+				<tbody id="r1">
+					<!-- 가입기간 -->
+					<tr>
+						<th scope="row"><span class="label">가입기간</span></th>
+						<td>
+							<div class="label-check1">
+								<input type="radio" name="가입기간" value="" checked="checked"id="join0" /><label for="join0">전체</label> 
+								<input type="radio" name="가입기간" value="3" id="join3" /> <label for="join3">3개월미만</label>
+								<input type="radio" name="가입기간" value="6" id="join6" /> <label for="join6">3~6개월 미만</label> 
+								<input type="radio" name="가입기간"value="12" id="join12" /><label for="join12">6~12개월 미만</label>
+								<input type="radio" name="가입기간" value="24" id="join24" /><label for="join24">12~24개월 미만</label> 
+								<input type="radio" name="가입기간"value="99" id="join99" /><label for="join99">24개월 이상</label>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="btnArea">
+				<button type="button" class="btn-com c2" onclick="">조회</button>
+			</div>
+		</fieldset>
+
+		<h2 class="tit_dep3 total_num">
+			상품목록 <strong>6</strong>건
+		</h2>
+
+		<ul class="list-product1">
+			<li>
+				<div class="area1">
+					<a href="#none" class="title" title="상세정보" onclick=""> <strong>국민수퍼정기예금(개인)</strong>
+					</a> <span class="msg">가입 조건을 직접 설계하는</span>
+					<dl class="info-data1">
+						<dt>가입가능경로</dt>
+						<dd>영업점</dd>
+					</dl>
+
+					<div class="info-data2">
+						최고 연 <strong><span>3.25</span>%</strong> <span>(36개월)</span>
+					</div>
+				</div>
+
+				<div class="area2">
+					<button type="button" class="btn-icon1 ic5" onclick="location.href:signupprodt.html" title="">장바구니</button>
+				</div>
+			</li>
+
+			<li>
+				<div class="area1">
+					<a href="#none" class="title" title="상세정보" onclick=""> <strong>KB
+							Star 정기예금</strong>
+
+					</a> <span class="msg">YK의 대표 정기예금</span>
+					<dl class="info-data1">
+						<dt>가입가능경로</dt>
+						<dd>인터넷</dd>
+						<dd>스타뱅킹</dd>
+					</dl>
+
+					<div class="info-data2">
+						최고 연 <strong><span>2.97</span>%</strong> <span>(36개월)</span>
+					</div>
+				</div>
+
+				<div class="area2">
+					<button type="button" class="btn-icon1 ic5" onclick="location.href:signupprodt.html">장바구니</button>
+
+					<a href="signupprodt.html" class="btn-com c1">가입하기</a>
+				</div>
+			</li>
+
+			<li>
+				<div class="area1">
+					<a href="#none" class="title" title="상세정보" onclick="location.href:signupprodt.html"> <strong>YK special예금</strong>
+					</a> <span class="msg">월복리로 목돈 굴리는 예금</span>
+					<dl class="info-data1">
+						<dt>가입가능경로</dt>
+						<dd>인터넷</dd>
+						<dd>스타뱅킹</dd>
+					</dl>
+				</div>
+				<div class="area2">
+					<button type="button" class="btn-icon1 ic5" onclick="location.href:signupprodt.html"
+						title="YK special 예금">장바구니</button>
+					<a href="#none" class="btn-com c1" onclick="location.href:signupprodt.html">가입하기</a>
+				</div>
+			</li>
+
+			<li>
+				<div class="area1">
+					<a href="#none" class="title" title="상세정보" onclick="location.href:signupprodt.html"> <strong>YK골든라이프연금우대예금</strong>
+					</a> <span class="msg">은퇴후 현명한 목돈 관리법</span>
+					<dl class="info-data1">
+						<dt>가입가능경로</dt>
+						<dd>영업점</dd>
+					</dl>
+					<div class="info-data2">
+						최고 연 <strong><span>3.35</span>%</strong> <span>(12개월)</span>
+					</div>
+				</div>
+				<div class="area2">
+					<button type="button" class="btn-icon1 ic5" onclick="location.href:signupprodt.html" title="">장바구니</button>
+					
+				</div>
+
+			</li>
+
+			<li>
+				<div class="area1">
+					<a href="#none" class="title" title="상세정보" onclick="location.href:signupprodt.html"> <strong>일반정기예금</strong>
+					</a> <span class="msg">목돈넣고 안정수익 마음든든</span>
+					<dl class="info-data1">
+						<dt>가입가능경로</dt>
+						<dd>영업점</dd>
+					</dl>
+					<div class="info-data2">
+						최고 연 <strong><span>3</span>%</strong> <span>(36개월)</span>
+					</div>
+				</div>
+
+				<div class="area2">
+					<button type="button" class="btn-icon1 ic5" onclick="location.href:signupprodt.html"
+						title="일반정기예금 장바구니담기 새창열림">장바구니</button>
+				</div>
+			</li>
+			<li>
+				<div class="area1">
+					<a href="#none" class="title" title="상세정보"onclick="location.href:signupprodt.html"> <strong>국민수퍼정기예금
+							(CD금리연동형)</strong>
+					</a> <span class="msg">금리상승기에 유리한 예금</span>
+					<dl class="info-data1">
+						<dt>가입가능경로</dt>
+						<dd>영업점</dd>
+					</dl>
+				</div>
+				<div class="area2">
+					<button type="button" class="btn-icon1 ic5" onclick="location.href:signupprodt.html" title="">장바구니</button>
+				</div>
+			</li>
+		</ul>
+		<div class="inq_btn_area">
+			<p class="txt-mark1">2023.03.23 기준, 세금공제전, 우대금리포함</p>
+		</div>
+		<!-- pagenate -->
+		<div class="pagenate">
+			<div class="paging">
+				<form method="post" name="pageinput1" id="pageinput1"
+					action="/quics?page=C016613&amp;CC=b061496:b061496" onsubmit="">
+					<input type="hidden" name="NEXT_TAG_PAGE" value="1" /><span
+						class="selected"> <input type="submit" value="1"
+						title="현재1페이지" /></span>
+				</form>
+			</div>
+		</div>
+		<!-- //pagenate -->
+		<!-- 똑똑한 상품찾기 배너형 링크 -->
+		<div class="area-banner1">
+			<dl>
+				<dt>
+					<b>똑똑</b>한 상품 찾기
+				</dt>
+				<dd>당신의 미래를 위한 똑똑한 선택, 지금 바로 시작하세요!</dd>
+				<dd>
+					<a href="#" title="새창" onclick="location.href='listprodt.html'">바로가기</a>
+				</dd>
+			</dl>
+		</div>
+		
+		<div class="">
+		<h2>추천상품</h2>
+		<p>나에게 맞는 추천 상품은? <br/>#직장인 #Youth #골든라이프 <a href="#none" onclick="location.href='listprodt.html'" class="" title="추천상품 바로가기">바로가기</a></p>
+	</div>
+</div>
+</body>
+</html>

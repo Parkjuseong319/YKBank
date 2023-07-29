@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout5}">
+<link href="css/product.css" rel="stylesheet">
+<link rel="stylesheet" th:href="@{css/customer.css/checkmail.css}" />
+	<link rel="stylesheet" th:href="@{css/paging.css}" />
+<body id="admin_prodt_list-page">	<!-- 관리자 상품 조회 페이지 -->
+	<div layout:fragment="content">
+		<div class="container px-4 px-lg-5">
+			<div th:if="${session.user_level} == 'admin' ">
+				<input class="button_1" type="button"
+					th:onclick="|location.href='@{admin_prodt_insert}'|" value="상품등록">
+			</div>
+			<table class="table table-striped table-hover">
+				<tr>
+					<th>상품번호</th>
+					<th>금융상품명</th>
+					<th>상품분류</th>
+					<th>기본금리</th>
+					<th>금액한도</th>
+					<th>상품등록일시</th>
+					<th>상품등록자</th>
+					<th>상품가입기간</th>
+					<th>수정/삭제</th>
+				</tr>
+				<th:block th:if="${datas.size > 0}">
+					<tr th:each="data:${datas}">
+						<td>[[${data.fin_prdt_code}]]</td>
+						<td>[[${data.fin_prdt_nm}]]</td>
+						<td>[[${data.fin_prdt_type}]]</td>
+						<td>[[${data.basic_rate}]]%</td>
+						<th:block th:if="${data.max_limit} == 0">
+						<td>없음</td>
+						</th:block>
+						<th:block th:if="${data.max_limit} != 0">
+						<td>[[${data.max_limit}]]원</td>
+						</th:block>
+						<td>[[${data.created_dt}]]</td>
+						<td>[[${user_name}]]</td>
+						<th:block th:if="${data.expired} == 0">
+						<td>없음</td>
+						</th:block>
+						<th:block th:if="${data.expired} != 0">
+						<td>[[${data.expired}]]개월</td>
+						</th:block>
+						<td><a
+							th:href="@{/admin_prodt_detail(fin_prdt_code=${data.fin_prdt_code})}">수정</a> / 
+							<a
+							th:href="@{/admin_prodt_delete(fin_prdt_code=${data.fin_prdt_code})}">삭제</a></td>
+					</tr>
+				</th:block>
+				<th:block th:if="${datas.size ==0}">
+					<tr>
+						<td colspan="7" align="center">가입한 상품이 없습니다</td>
+					</tr>
+				</th:block>
+			</table>
+			<form class="search-form" th:action="@{/admin_prodt_search}" method="get">
+					<label for="search-text">상품명 검색:</label>
+					<input type="text" id="searchValue" name="searchValue">
+					<input type="submit" value="Search">
+				</form>
+		</div>
+	</div>
+</body>
+</html>
+

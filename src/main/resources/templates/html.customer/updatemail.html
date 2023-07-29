@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout5}">
+<head>
+<title>문의사항</title>
+<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+<body>
+	<div layout:fragment="content">
+		<div class="container_next">
+			<h3>문의 수정</h3><br/>
+			<form th:action="@{mailupdate(customer_email_no=${data.customer_email_no})}" method="post">
+			
+			<label for="customer_email_title">제목:</label>
+ 		    <input type="text" name="customer_email_title" th:value="${data.customer_email_title}">
+
+      		<label for="customer_email_content">내용:</label>
+      		<textarea name="customer_email_content" th:text=${data.customer_email_content}></textarea>
+			
+			
+			<label for="customer_email_name">이름:</label>
+			<input type="text"name="customer_email_name" th:value="${data.customer_email_name}" readonly>
+
+			<label for="customer_email_password">비밀번호:</label>
+			<input type="password"name="customer_email_password" th:value="${data.customer_email_password}">
+
+			<label for="customer_email">이메일:</label>
+			<input type="email" name="customer_email" th:value="${data.customer_email}">
+
+			<label for="customer_email_tel">전화번호:</label>
+			<input type="text" name="customer_email_tel" th:value="${data.customer_email_tel}">
+
+			<input type="submit" value="수정하기" class="btn_1" >
+			<input type="button" value="삭제하기" class="btn_1" th:onclick ="|location.href='@{maildelete(customer_email_no=${data.customer_email_no})}'|">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

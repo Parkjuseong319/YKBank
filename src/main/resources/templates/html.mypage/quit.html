@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout7}">
+	<head>
+<link rel="stylesheet" th:href="@{css/mypage.css/chgPwd.css}" />
+<link rel="stylesheet" th:href="@{css/modal.css}" />
+</head>
+	<body>
+	<div layout:fragment="content">
+		<div class="user-balance-container">
+<script type="text/javascript">
+// 탈퇴 여부 재차 묻기
+function confirmQuit(){
+	
+	const quit_bank_name=frm.quit_bank_name.value;	// 은행명
+	const quit_account_num=frm.quit_account_num.value;	// 은행 계좌명
+	
+	const checkBox=document.getElementById("quit-check");
+	const isCheck=checkBox.checked;	// 체크 박스의 체크여부 확인: true / false
+	
+	if(quit_bank_name!=="" && quit_account_num!=="" && isCheck){ // 약관을 동의하는 경우 & 은행명과 계좌번호를 모두 입력
+		
+		frm.submit();
+		//location.href="chkPwdForQuit?quit_bank_name="+bank+"&quit_account_num="+bank_num;
+		
+	} else if(!isCheck){	// 약관 동의를 하지 않은 경우(약관 동의를 알리는 )
+		showModal("탈퇴 약관을 동의해주세요.");	
+	} else if(bank==="" || bank_num===""){
+		showModal("은행명과 계좌번호를 입력해주세요.");
+	
+	}
+}
+function showModal(message) {
+	var modal = document.createElement("div");
+	modal.className = "modal";
+	modal.innerHTML = '<div class="modal-content">' +
+	'<div class="modal-header">' +
+	'<span class="close">&times;</span>' +
+	'</div>' +
+	'<div class="modal-body">' +
+	'<p>' + message + '</p>' +
+	'<button id="user_close_btn">닫기</button>'+
+	'</div>' +
+	'</div>';
+	
+	var closeButton = modal.querySelector(".close");
+	closeButton.onclick = function() {
+		modal.style.display = "none";
+	}
+	
+	var userCloseBtn=modal.querySelector("#user_close_btn");
+	userCloseBtn.onclick=function(){
+		modal.style.display="none";
+	}
+	
+	document.body.appendChild(modal);
+	modal.style.display = "block";
+}
+
+</script>
+			<table>
+				<thead>
+					<tr>
+						<th><i th:text="|${userInfo.user_name}님의 보유 자산|"></i></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2">
+							<!-- 회원의 총 자산 --> 
+							<th:block th:text="|${account_balance} 원|"></th:block>
+						</td>
+					</tr>
+					<tr>
+						<td>이용 중인 상품 개수</td>
+						<td>
+							<!-- 가입중인 총 상품 개수 --> 
+							<th:block th:text="|${prdtCnt} 개|"></th:block>
+						</td>
+					</tr>
+					<tr>
+						<td>가입일</td>
+						<td>
+							<th:block th:text="|${userInfo.user_regdate}|"></th:block>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="send-money-container">
+			<form id="frm" th:action="@{quitSuccess}" method="post">
+			<table>
+				<thead>
+					<tr>
+						<th>입금 계좌 입력</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan='2'>** 영업일 기준 5일 이내로 보유 자산이 입력하신 계좌로 입급됩니다. **</td>
+					</tr>
+					<tr>
+						<td>은행명</td>
+						<td>
+							<input type="text" name="quit_bank_name" placeholder="은행명 입력" />
+						</td>
+					</tr>
+					<tr>
+						<td>계좌번호</td>
+						<td>	
+							<input type="text" name="quit_account_num" placeholder="계좌번호 입력" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+		<div class="quit-term">
+			<p>탈퇴약관</p>
+			<p>탈퇴하시면 yk bank에서 제공하는 모든 서비스를 이용하실 수 없습니다. 재가입해도 기존 거래 내역을 확인하실 수 없습니다</p>
+			<p>재가입시 기존의 정보를 재사용할 수 없으며 모든 정보를 다시 등록하셔야 합니다.</p>
+			
+			<label><input type="checkbox" id="quit-check" onclick="is_checked()">동의합니다.</label> 
+		</div>
+		<div class="send-data-container">
+			
+			<table>
+				<tbody>
+					<tr>
+						<td> 
+							<input type="button" value="탈퇴하기" class="btn" id="btnCheck" onclick="confirmQuit()">
+						</td>
+						<td> 
+							<input type="button" value="메인" th:onclick="|location.href='@{index}'|">
+						</td>
+						<td> 
+							<input type="button" value="취소" th:onclick="|location.href='@{mymain}'|">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		</div>
+		
+		</div>
+	</body>
+</html>

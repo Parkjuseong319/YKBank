@@ -1,0 +1,303 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!-- <body> -->
+ <header class="header navbar-area">
+      <div class="container">
+            <div class="row align-items-center" th:if="${session.user_level} != 'admin' ">
+                <div class="col-lg-12">
+                    <div class="nav-inner">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" th:href="@{index}">
+                                <img src="images/logo/finallogo.png" alt="Logo">
+                            </a>
+                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id=navbarSupportedContent>
+                                <ul id=nav class="navbar-nav ms-auto">
+                                <li class=nav-item>
+                                <a class="active dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-1" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">은행 소개</a>
+                                <ul class="sub-menu collapse" id=submenu-1-1>
+                                <li class="nav-item active"><a th:href="@{aboutintromain}">소개</a></li>
+                                </ul>
+                                </li>
+
+                                <li class=nav-item>
+                                <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-4" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">조회/이체/출금</a>
+                                <ul class="sub-menu mega-menu collapse" id=submenu-1-4>
+                                <li class=single-block>
+                                <ul>
+                                <li class=mega-menu-title>조회 및 출금</li>
+                                <li class=nav-item><a th:href="@{/view}">조회</a></li>
+                                <li class=nav-item><a th:href="@{/directsend1}">출금</a></li>
+
+
+                                </ul>
+                                </li>
+                                <li class=single-block>
+                                    <ul>
+                                    <li class=mega-menu-title>이체</li>
+                                    <li class=nav-item><a th:href="@{reservesend1}">예약이체</a></li>
+                                    <li class=nav-item><a th:href="@{directsend1}">즉시이체</a></li>
+                                    </ul>
+                                    </li>
+                            
+                                </ul>
+                                </li>
+
+                                <li class=nav-item>
+                                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-4" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">금융상품</a>
+                                    <ul class="sub-menu mega-menu collapse" id=submenu-1-4>
+                                    <li class=single-block>
+                                    <ul>
+                                    <li class=mega-menu-title>예금</li>
+                                    <!-- 
+                                    <li class=nav-item><a href="/signupprodt">상품가입</a></li>
+                                     -->
+                                    <li class=nav-item><a href="/prodtlist">상품가입</a></li>
+                                    <li class=nav-item><a href="/myprodtview">해지/조회</a></li>
+                                    <li class=nav-item><a href="/introprodt">상품안내</a></li>
+    
+                                    </ul>
+                                    </li>
+                                    <li class=single-block>
+                                        <ul>
+                                        <li class=mega-menu-title>대출</li>
+                                        <li class=nav-item><a href="/loanlist">대출신청</a></li>
+                                        <li class=nav-item><a href="/myloan">대출관리</a></li>
+                                        </ul>
+                                        </li>
+                                
+                                    </ul>
+                                    </li>
+
+                                <li class=nav-item>
+                                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-4" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">고객센터</a>
+                                    <ul class="sub-menu mega-menu collapse" id=submenu-1-4>
+                                    <li class=single-block>
+                                    <ul>
+                                    <li class=mega-menu-title>상담</li>
+                                    <li class=nav-item><a th:href="@{/mailconsult}">메일상담</a></li>
+                                    <li class=nav-item><a th:href="@{/checkmail}">메일 문의 수정/삭제</a></li>
+                                    </ul>
+                                    </li>
+                                    <li class=single-block>
+                                        <ul>
+                                        <li class=mega-menu-title>질문</li>
+                                        <li class=nav-item><a th:href="@{faq}">FAQ</a></li>
+                                        </ul>
+                                        </li>
+                                
+                                    </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class=" dd-menu collapsed" href="javascript:void(0)"
+                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                                            aria-label="Toggle navigation">공지사항</a>
+                                        <ul class="sub-menu collapse" id="submenu-1-5">
+                                            <li class=nav-item><a th:href="@{notification}">공지사항</a></li>
+                                            <li class=nav-item><a th:href="@{event}">이벤트</a></li>
+                                            <li class=nav-item><a th:href="@{terms}">약관</a></li>
+                                        </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class=" dd-menu collapsed" href="javascript:void(0)"
+                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-4"
+                                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                                            aria-label="Toggle navigation">전체서비스</a>
+                                        <ul class="sub-menu mega-menu collapse" id="submenu-1-4">
+                                            
+                                             <li class=single-block>
+                                                <ul>
+                                                <li class=nav-item><a th:href="@{faq}">FAQ</a></li>
+                                                <li class=nav-item><a th:href="@{myloan}">대출관리</a></li>
+                                                <li class=nav-item><a th:href="@{loanlist}">대출신청</a></li>
+                                                <li class=nav-item><a th:href="@{mymain}">마이페이지</a></li>
+                                                <li class=nav-item><a th:href="@{mailconsult}">메일상담</a></li>
+                                                <li class=nav-item><a th:href="@{prodtlist}">상품가입</a></li>
+                                                </ul>
+                                                </li>
+                                                <li class=single-block>
+                                                    <ul>                                       	
+                                                    	<li class=nav-item><a th:href="@{introprodt}">상품안내</a></li>
+                                                        <li class=nav-item><a th:href="@{reservesend1}">예약이체</a></li>
+                                                        <li class=nav-item><a th:href="@{event}">이벤트</a></li>
+                                                        <li class=nav-item><a th:href="@{view}">조회/출금</a></li>
+                                                        <li class=nav-item><a th:href="@{directsend1}">즉시이체</a></li>
+                                                        <li class=nav-item><a th:href="@{introprodt}">해지/조회</a></li>
+                                                    </ul>
+                                                    </li>
+                                                </ul>
+                                                </li>
+                              			  </ul>
+                              		  </div>
+                              		  
+<div class="login-button">
+    <ul>
+        <li th:if="${session.user_id == null or session.user_id == 'null'}">
+            <a th:href="@{login}"><i class="lni lni-enter"></i> Login</a>
+        </li>
+        <li th:if="${session.user_id != null and session.user_id != 'null'}">
+            <div>
+                [[${session.user_name}]]님
+            </div>
+            <div>
+                <a th:href="@{logout}"><i class="lni lni-exit"></i> Logout</a>
+            </div>
+        </li>
+        <li>
+            <div th:if="${session.user_id != null and session.user_id != 'null'}">
+  					 안녕하세요
+</div>
+            <a th:href="@{mymain}"><i class="lni lni-user"></i> Mypage</a>
+        </li>
+    </ul>
+</div>
+                        </nav> <!-- navbar -->
+                    </div>
+                </div>
+            </div> <!-- row -->
+            
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+            <!-- 관리자 영역=========================================== -->
+                  <div class="row align-items-center" th:if="${session.user_level} == 'admin'">
+                <div class="col-lg-12">
+                    <div class="nav-inner">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" th:href="@{index}">
+                                <img src="images/logo/finallogo.png" alt="Logo">
+                            </a>
+                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse sub-menu-bar" id=navbarSupportedContent>
+                                <ul id=nav class="navbar-nav ms-auto">
+                             
+                                <li class=nav-item>
+                                <a class="active dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-1" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">은행 소개</a>
+                                <ul class="sub-menu collapse" id=submenu-1-1>
+                                <li class="nav-item active"><a th:href="@{aboutintromain}">소개</a></li>
+                                </ul>
+                                </li>
+                                
+                                <li class=nav-item>
+                                <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-4" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">은행 관리</a>
+                                <ul class="sub-menu collapse" id=submenu-1-1>
+                                <li class="nav-item"><a th:href="@{adminManager}">회원관리</a></li>
+                                <li class=nav-item><a th:href="@{abouthistory}">실적관리</a></li>
+                                </ul>
+                                </li>
+
+                                <li class=nav-item>
+                                <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-4" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">계좌관리</a>
+                                <ul class="sub-menu mega-menu collapse" id=submenu-1-4>
+                                <li class=single-block>
+                                <ul>
+                                <li class=mega-menu-title>계좌관리</li>
+                                <li class=nav-item><a th:href="@{view}">조회</a></li>
+
+                                </ul>
+                                </li>
+                                <li class=single-block>
+                                    <ul>
+                                       <li class=mega-menu-title>이체관리</li>
+                                    <li class=nav-item><a th:href="@{/reservemanage}">예약이체관리</a></li>
+                                    </ul>
+                                    </li>
+                            
+                                </ul>
+                                </li>
+
+                                <li class=nav-item>
+                                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-4" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">상품관리</a>
+                                    <ul class="sub-menu mega-menu collapse" id=submenu-1-4>
+                                    <li class=single-block>
+                                    <ul>
+                                    <li class=mega-menu-title>상품</li>
+                                    <li class=nav-item><a href="/admin_prodt_list">상품관리</a></li>
+                                   
+    
+                                    </ul>
+                                    </li>
+                                    <li class=single-block>
+                                        <ul>
+                                        <li class=mega-menu-title><br/></li>
+                                         <li class=nav-item><a href="/introprodt">예금상품안내</a></li>
+                                        </ul>
+                                        </li>
+                                
+                                    </ul>
+                                    </li>
+
+                                <li class=nav-item>
+                                    <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle=collapse data-bs-target="#submenu-1-4" aria-controls=navbarSupportedContent aria-expanded=false aria-label="Toggle navigation">고객센터</a>
+                                    <ul class="sub-menu mega-menu collapse" id=submenu-1-4>
+                                    <li class=single-block>
+                                    <ul>
+                                    <li class=mega-menu-title>상담</li>
+                                    <li class=nav-item><a th:href="@{/checkmail}">메일 문의 관리</a></li>
+                                    </ul>
+                                    </li>
+                                    <li class=single-block>
+                                        <ul>
+                                        <li class=mega-menu-title>질문</li>
+                                        <li class=nav-item><a th:href="@{faq}">FAQ</a></li>
+                                        </ul>
+                                        </li>
+                                
+                                    </ul>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class=" dd-menu collapsed" href="javascript:void(0)"
+                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-5"
+                                            aria-controls="navbarSupportedContent" aria-expanded="false"
+                                            aria-label="Toggle navigation">공지사항</a>
+                                        <ul class="sub-menu collapse" id="submenu-1-5">
+                                            <li class=nav-item><a th:href="@{notification}">공지사항</a></li>
+                                            <li class=nav-item><a th:href="@{event}">이벤트</a></li>
+                                            <li class=nav-item><a th:href="@{terms}">약관</a></li>
+                                        </ul>
+                                    </li>
+                              			  </ul>
+                              		  </div>
+                              		  
+                            <div class="login-button">
+                                <ul>
+                                    <li>
+                                      <a th:if="${session['user_id'] == null or session['user_id'] == 'null'}" th:href="@{login}"><i class="lni lni-enter"></i>Login</a>
+									  <div th:if="${session['user_id'] != null and session['user_id'] != 'null'}" th:href="@{logout}"> [[${session.user_name}]]님</div><br/>
+									  <a th:if="${session['user_id'] != null and session['user_id'] != 'null'}" th:href="@{logout}"><i class="lni lni-exit"></i>Logout</a>                  
+                                    </li>
+                                    <li>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav> <!-- navbar -->
+                    </div>
+                </div>
+            </div> <!-- row -->
+        </div> <!-- container -->
+</header>
+<!-- </body> -->

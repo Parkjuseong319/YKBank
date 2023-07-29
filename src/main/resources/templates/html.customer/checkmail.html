@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+   xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout5}">
+<head>
+   <title>게시판 목록</title>
+   <link rel="stylesheet" th:href="@{css/customer.css/checkmail.css}" />
+   <link rel="stylesheet" th:href="@{css/paging.css}" />
+</head>
+<body id="checkmail-page">
+   <div layout:fragment="content" >
+  
+      <div class="container_next" >
+         <h1>메일 문의</h1>
+         <table border= "1" >
+            <thead>
+               <tr>
+                  <th>제목</th>
+                  <th>작성자</th>
+                  <th>작성일</th>
+               </tr>
+            </thead>
+            
+            <tbody th:if="${datas != null}">
+               <!-- 게시물 목록을 동적으로 생성하는 부분 -->
+               <tr th:each="datas : ${datas}">
+                  <td th:if="${session.user_level} != 'admin' "><a th:href="@{/mailpassword(customer_email_no=${datas.customer_email_no})}" th:text="|클릭하여 상세보기|"></a></td>
+                  <td th:if="${session.user_level} == 'admin' "><a th:href="@{/upDelpageAdmin(customer_email_no=${datas.customer_email_no})}">[[${datas.customer_email_title}]]</a></td>
+                  <td th:text="${datas.customer_email_name}"></td>
+                  <td th:text="${datas.customer_email_date}"></td>
+               </tr>
+            </tbody>
+            
+            <tbody th:if="${datas.size == 0}">
+               <tr>
+                  <td colspan="3" th:text="|회원정보없음|"></td>
+               </tr>
+            </tbody>
+            
+         </table>
+            <form class="search-form" th:action="@{/mailSearch}" method="get">
+               <label for="search-text">작성자:</label>
+               <input type="text" id="searchValue" name="searchValue">
+               <input type="submit" value="Search">
+            </form>
+	           <table class="paging">
+					  <tr style="text-align: center">
+					    <td colspan="5">
+					      <div class="pagination">
+							<a th:class="${page == 1} ? disabled : ''" th:href="@{checkmail(page=1)}">&laquo;</a>
+							<a th:class="${page == 1} ? disabled : ''" th:href="@{checkmail(page=${page - 1})}">&lt;</a>
+							<a th:each="psu : ${#numbers.sequence(page > 2 ? page - 2 : 1, page < pagesu - 2 ? page + 2 : pagesu)}"
+							   th:class="${psu == page} ? active : ''"
+							   th:href="@{checkmail(page=${psu})}"
+							   th:text="${psu}"></a>
+							<a th:class="${page == pagesu} ? disabled : ''" th:href="@{checkmail(page=${page + 1})}">&gt;</a>
+							<a th:class="${page == pagesu} ? disabled : ''" th:href="@{checkmail(page=${pagesu})}">&raquo;</a>
+					      </div>
+					    </td>
+					  </tr>
+				</table>
+         </div>
+      </div>
+   </body>
+</html>

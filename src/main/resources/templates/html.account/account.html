@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout7}">
+<head>
+	<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+	<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	 <link th:href="@{/css/account/account.css}" rel="stylesheet" />
+	<script>
+		$(document).ready(function(){
+			$("button[name=check]").click(function(){
+				var account_no = $(this).val();
+			        $.ajax({
+			            type: "post",
+			            url: "trans",
+			            data: {
+			            	account_no : account_no
+			            },
+			            dataType: "json",
+			            success: function(data) {
+			            	
+			                let str = "<table><tr><td colspan='6'>거래 내역</td></tr><tr>"
+			               	str += "<td>거래종류</td><td>거래결과</td><td>거래량</td><td>거래 후 잔액</td><td>은행</td><td>보낸 계좌</td><td>거래일</td></tr>"
+			              
+			                $(data.transaction).each(function(idx, obj) {
+			                	
+								str += "<tr><td>"+obj.transaction_type+"</td><td>"+obj.transaction_result_type 
+								+"</td><td>"+obj.amount+"원"+"</td><td>"+obj.transaction_balance+"</td><td>"
+								+obj.take_fin_co_no+"</td><td>"+obj.take_account_number+"</td><td>"
+								+obj.transacted_dt+"</td></tr>";
+
+				                });
+			                
+			                str += "</table>";
+			                $("#transactioncheck").html(str);
+			                
+			            },
+			            error: function() {
+			                $("#transactioncheck").text("error");
+				}
+			}); 			        
+		}); 
+			   $("#send").click(function(){
+			        frm.submit();
+			    });
+		});
+	</script>
+</head>
+<body>
+	<div layout:fragment="content">
+		<div id="account-page">
+			<br />
+			<h3>계좌 조회</h3><br/>
+			<form th:action="@{directsend1}" method="get" name="frm">
+			<table border="1">
+				<tr>
+					<th>계좌명</th>
+					<th>계좌번호</th>
+					<th>개설일자</th>
+					<th>만기일</th>
+					<th>잔액(원)</th>
+					<th>거래내역</th>
+				</tr>
+				<tr th:each="i:${info}">
+					<td th:text="${i.fin_prdt_nm}"></td>
+					<td th:text="${i.account_number}"></td>
+					<td th:text="${i.account_reg_date}"></td>
+					<td th:text="${i.account_un_reg_date}"></td>
+					<td th:text="${#numbers.formatInteger(i.account_balance,1,'COMMA')+ '원'}"></td>
+					<td><button type="button" th:name="check" th:value="${i.account_no}"><a href ="#Section1">보기</a></button></td>
+				</tr>
+			</table>		
+			<input type="button" id="send" value="즉시이체하러가기">
+			</form>
+			<br/><br/><br/>
+			<a name ="Section1"></a>
+			<div id="transactioncheck"></div>
+		</div>
+	</div>
+</body>
+</html>

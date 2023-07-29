@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http:/www.thymeleaf.org">
+<meta charset="UTF-8">
+<th:block th:include="fragments/head"></th:block>
+<body>
+	<th:block th:include="fragments/header"></th:block>
+	<div>
+	<br/><br/><br/>
+	<a href="/myinfo">나의 정보 수정</a><br/>
+	<a href="/mydate">금융 캘린더</a><br/>
+	<a href="/membership">나의 우대 등급</a><br/>
+	<a href="/myvisited">최근 접속 이력</a><br/>
+	</div>
+	<th:block th:include="fragments/footer"></th:block>
+</body>
+</html>

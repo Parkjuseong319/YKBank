@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout7}">
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<body>
+	<div layout:fragment="content">
+		<form name ="frm" method="post" th:action="@{logininsert}" >
+			<div class="container_next">
+				<h3>회원 가입</h3>
+				<br /> <label for="user_id">아이디:</label> <input type="text"
+					id="user_id" name="user_id">
+
+				<button type="button" onclick="double_check($('#user_id').val())">중복확인</button>
+				<div id="result"></div>
+
+				<label for="user_passwd">비밀번호확인:</label> 
+				<input type="password" name="user_passwd"> <label for="confirm-password">비밀번호확인:</label>
+				<input type="password" name="confirmPassword"> 
+				<label for="user_name">이름:</label> <input type="text" name="user_name">
+
+				<label for="user_email">이메일:</label> 
+				<input type="text" name="user_email"> <label for="user_jumin">주민등록번호:</label>
+				<input type="text" name="user_jumin"> <label for="user_tel">전화번호:</label>
+				<input type="text" name="user_tel"> <label for="user_gen">성별을 선택해주세요 
+				<select id="user_gen" name="user_gen" class="sel" aria-label="성별">
+						<option value="" selected>성별을 선택해주세요</option>
+						<option value="남">남자</option>
+						<option value="여">여자</option>
+				</select>
+				</label>
+				<div>
+					<label for="user_zipcode">우편번호</label> 
+					<input type="text" id="user_zipcode" name="user_zipcode" placeholder="우편번호">
+					<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> 
+					<input type="text" 	id="user_addr" name="user_addr" placeholder="도로명주소"> 
+					<input type="text" id="user_addr2" name="user_addr2" placeholder="지번주소">
+					<span id="guide" style="color: #999; display: none"></span> 
+					<input type="hidden" id="sample4_detailAddress" placeholder="상세주소">
+					<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
+					
+					<script>
+                  //본 예제에서는 도로명 주소 표기 방식에 대한 법령에 따라, 내려오는 데이터를 조합하여 올바른 주소를 구성하는 방법을 설명합니다.
+                  function sample4_execDaumPostcode() {
+                     new daum.Postcode(
+                           {
+                              oncomplete : function(data) {
+                                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+         
+                                 // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                                 var roadAddr = data.roadAddress; // 도로명 주소 변수
+                                 var extraRoadAddr = ''; // 참고 항목 변수
+         
+                                 // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                                 // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                                 if (data.bname !== ''
+                                       && /[동|로|가]$/g.test(data.bname)) {
+                                    extraRoadAddr += data.bname;
+                                 }
+                                 // 건물명이 있고, 공동주택일 경우 추가한다.
+                                 if (data.buildingName !== ''
+                                       && data.apartment === 'Y') {
+                                    extraRoadAddr += (extraRoadAddr !== '' ? ', '
+                                          + data.buildingName
+                                          : data.buildingName);
+                                 }
+                                 // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                                 if (extraRoadAddr !== '') {
+                                    extraRoadAddr = ' (' + extraRoadAddr + ')';
+                                 }
+         
+                                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
+         
+                                 document.getElementById("user_zipcode").value = data.zonecode;
+                                 document.getElementById("user_addr").value = roadAddr;
+                                 document.getElementById("user_addr2").value = data.jibunAddress;
+                                 // 참고항목 문자열이 있을 경우 해당 필드에 넣는다.
+                                 if (roadAddr !== '') {
+                                    document
+                                          .getElementById("sample4_extraAddress").value = extraRoadAddr;
+                                 } else {
+                                    document
+                                          .getElementById("sample4_extraAddress").value = '';
+                                 }
+         
+                                 var guideTextBox = document
+                                       .getElementById("guide");
+         
+                              }
+                           }).open();
+                  }
+                  </script>
+				</div>
+				<label for="customer_email_agree">개인정보동의: 
+				<input type="checkbox" name="customer_email_agree"></label> 
+				<label for="customer_email_accept">이메일 수신 동의: 
+				<input type="checkbox" name="customer_email_accept"></label> 
+<div class="d-flex justify-content-center">
+  <div class="btn-group">
+    <input type="button" class="btn btn-primary" id="signup-button" value="회 원 가 입" th:onclick="javascript:signupChk()"> 
+    <input type="reset" value="다시쓰기" class="btn btn-primary"> 
+ <input type="button" class="btn btn-primary" onclick="javascript:history.back();" value="뒤로가기">
+  </div>
+</div>
+			</div>
+		</form>
+		<script>
+			function signupChk() {
+			    var frm = document.frm;
+			    if (!frm.user_id.value) {
+			       showModal("아이디을 입력해 주십시오.");
+			        frm.user_id.focus();
+			        return;
+			    }
+			    if (!frm.user_passwd.value) {
+			        showModal("비밀번호를 입력해 주십시오.");
+			        frm.user_passwd.focus();
+			        return;
+			    }
+			    else if (!passwdcheck(frm.confirmPassword.value)) {
+			         showModal("올바른 비밀번호 형식이 아닙니다. <br/> 대소문자, 숫자, 특수문자를 조합하세요");
+			         frm.passwdcheck.focus();
+			         return;
+			    }
+			    if (!frm.user_name.value) {
+			       showModal("이름을 입력해 주십시오.");
+			        frm.user_name.focus();
+			        return;
+			    }
+			    if (!frm.user_email.value) {
+			       showModal("이메일을 입력해 주십시오.");
+			        frm.user_email.focus();
+			        return;
+			    }
+			    
+			    if (!frm.user_jumin.value) {
+			       showModal("주민등록번호를 입력해 주십시오.");
+			        frm.user_jumin.focus();
+			        return;
+			    }
+			    
+			    if (!frm.user_tel.value) {
+			       showModal("전화번호를 입력해 주십시오.");
+			        frm.user_tel.focus();
+			        return;
+			    }
+			    if (!frm.user_zipcode.value) {
+			       showModal("우편번호를 입력해 주십시오.");
+			        frm.user_zipcode.focus();
+			        return;
+			    }
+			    if (!frm.user_addr.value) {
+			       showModal("도로명주소를 입력해 주십시오.");
+			        frm.user_addr.focus();
+			        return;
+			    } if (!frm.customer_email_agree.checked) {
+			       showModal("개인정보 수집에 동의해 주십시오.");
+			        frm.customer_email_agree.focus();
+			        return;
+			    }
+			    if (!frm.customer_email_accept.checked) {
+			       showModal("이메일 수신에 동의해 주십시오.");
+			        frm.customer_email_accept.focus();
+			        return;
+			    }
+			    
+			    function passwdcheck(passwd) {
+			        const re = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
+			    	 return re.test(passwd);
+			    }
+			    frm.submit();		    	
+			    
+			    
+			    
+			    function showModal(message) {
+			         var modal = document.createElement("div");
+			         modal.className = "modal";
+			         modal.innerHTML = '<div class="modal-content">' +
+			           '<div class="modal-header">' +
+			           '<span class="close">&times;</span>' +
+			           '</div>' +
+			           '<div class="modal-body">' +
+			           '<p>' + message + '</p>' +
+			           '</div>' +
+			           '</div>';
+			
+			         var closeButton = modal.querySelector(".close");
+			         closeButton.onclick = function() {
+			           modal.style.display = "none";
+			         }
+			
+			         document.body.appendChild(modal);
+			         modal.style.display = "block";
+			       }
+			    
+			 }
+			
+			 const toggle = document.getElementById("double_check");
+			 
+			 toggle.addEventListener("click", () => {
+			     toggle.parentNode.classList.toggle("active");
+			 });
+
+			 
+			 function double_check(user_id) {
+			     $.ajax({
+			         type: "get",
+			         url: "/check-userid-duplication",
+			         data: { "user_id": user_id },
+			         success: function (user) {
+			             let str = "";
+			             let datas = user.datas;
+			             $(datas).each(function(idx,obj){
+			                 $(datas).each(function(idx,obj){
+			                     str += "중복입니다";
+			                 });
+			             });
+			             if (user.datas.length === null || user.datas.length === undefined || user.datas.length === 0) {
+			                str += " 사용가능";
+			             } 
+			             $("#result").html(str);
+			         },
+			         error: function () {
+			             alert("user_id를 로드하는 데 실패했습니다.");
+			         },
+			     });
+			 }
+			
+</script>
+	</div>
+</body>
+</html>

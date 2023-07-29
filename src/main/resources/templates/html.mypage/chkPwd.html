@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout7}">
+<head>
+<title>비밀번호 확인</title>
+<link rel="stylesheet" th:href="@{css/mypage.css/chgPwd.css}" />
+<body id="chkPwd-page">
+<div layout:fragment="content">
+<script type="text/javascript">
+// 사용자의 비밀번호와 사용자가 입력한 비밀번호를 비교하여 불일치하면 알림창을 띄워주고 일치하면 회원수정 폼으로 페이지 이동
+window.onload=()=>{
+	let re=[[${result}]];
+	 
+	if(!re){
+		showModal("비밀번호가 일치하지 않습니다.");
+	}
+}
+		
+function showModal(message) {
+	var modal = document.createElement("div");
+	modal.className = "modal";
+	modal.innerHTML = '<div class="modal-content">' +
+	'<div class="modal-header">' +
+	'<span class="close">&times;</span>' +
+	'</div>' +
+	'<div class="modal-body">' +
+	'<p>' + message + '</p>' +
+	'<button id="user_close_btn">닫기</button>'+
+	'</div>' +
+	'</div>';
+
+	var closeButton = modal.querySelector(".close");
+	closeButton.onclick = function() {
+		modal.style.display = "none";
+		history.back();
+	}
+	
+	var userCloseBtn=modal.querySelector("#user_close_btn");
+	userCloseBtn.onclick=function(){
+		modal.style.display="none";
+		history.back();
+}
+
+	document.body.appendChild(modal);
+	modal.style.display = "block";
+}
+</script>
+		<div class="container_chgPwd">
+			<h3>비밀번호 확인</h3><br/>
+			<!-- th:object로 컨트롤러에서 bean 객체를 전달받음 -->
+			<form th:action="@{/myPwdChk}" method="post" name="frm">
+			<label for="user_name">비밀번호:</label>
+ 		    <input type="password" name="user_passwd">
+			<input type="submit" value="입력" class="btn" id="btnCheck">
+			</form>
+		</div>
+		<br/><br/><br/><br/><br/>
+	</div>
+</body>
+</html>

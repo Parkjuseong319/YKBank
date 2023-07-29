@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout3}">
+	<head>
+	<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+	<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			document.getElementById("gomain").onclick = function(){
+				location.href='index';
+			}
+			document.getElementById("onemore").onclick = function(){
+				location.href='directsend1';
+			}
+		}
+	</script>
+	</head>
+<body>
+	<div layout:fragment="content" class="container_next">
+	<form action="directsend" method="get">
+		<div>
+		<!-- 체크되거나 결제완료됬다라는 이미지 하나추가하고 -->
+			<ul>
+				<li>결과 <span th:text="${transinfo.transaction_result_type}"></span></li>
+				<li>출금계좌 <span th:text="${transinfo.give_account_number}"></span></li>
+				<li>입금은행 <span th:text="${takeinfo.bank_name}"></span></li>
+				<li>입금계좌 <span th:text="${transinfo.take_account_number}"></span></li>
+				<li>받는분 <span th:text="${takeinfo.user_name}"></span></li>
+				<li>이체금액(원) <span th:text="${transinfo.amount}"></span></li>
+				<li>수수료(원) <span>0</span></li>
+			</ul>
+		</div>
+		<div>
+			즉시 이체 처리가 완료되었습니다.<br /> 거래완료 후 처리결과 조회 및 정상 신청등록 여부를 확인하여 주시기 바랍니다.<br />
+		</div>
+		<hr />
+		<div>
+			이체 후 출금계좌 잔액 : <span th:text="${transinfo.transaction_balance}"></span>
+		</div>
+		<input type="button" id="gomain" value="홈으로 돌아가기"> 
+		<input type="button" id="onemore" value="추가 이체하러 가기">
+		</form>
+	</div>
+</body>
+</html>

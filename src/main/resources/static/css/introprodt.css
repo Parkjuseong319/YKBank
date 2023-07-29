@@ -1,0 +1,106 @@
+.introprodt-page {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+.introprodt-page h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.introprodt-page label {
+  display: inline-block;
+  font-size: 18px;
+  padding: 10px 20px;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  cursor: pointer;
+}
+
+.introprodt-page label:hover {
+  background-color: #ddd;
+}
+
+.introprodt-page input[type="radio"] {
+  display: none;
+}
+
+.introprodt-page input[type="radio"]:checked + label {
+  background-color: #ddd;
+}
+
+.introprodt-page section {
+  display: none;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.introprodt-page input[type="radio"]:checked ~ section {
+  display: block;
+}
+
+.introprodt-page .box-guide {
+  margin: 0;
+  padding: 0;
+}
+
+.introprodt-page .box-guide dt {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.introprodt-page .box-guide dd {
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.introprodt-page .title-area {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.introprodt-page .list-txt {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.introprodt-page .list-txt li {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.introprodt-page .list-txt li em {
+  font-style: normal;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.introprodt-page .list-txt li a {
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 20px;
+  background-color: #0077c2;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.introprodt-page .list-txt li a:hover {
+  background-color: #005ea3;
+}
+
+.introprodt-page .no {
+  list-style: none;
+  padding-left: 0;
+}

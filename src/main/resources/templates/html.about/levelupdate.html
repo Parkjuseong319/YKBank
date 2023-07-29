@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>회원 등급 수정</title>
+</head>
+<body>
+회원 등급 수정<br/>
+  <form action="update" method="post" th:object="${data}">
+    <input type="hidden" th:field="*{user_id}">
+    고객ID : <span th:text="${data.user_id}">번호출력</span><br/>
+    고객명 : [[${data.user_id}]]<br/>
+    이메일 : [[${data.user_email}]]<br/>
+    등  급 : 
+    <select name="user_level">
+    	<option value="" selected>--선택--</option>
+    	<option value="silver">silver</option>
+    	<option value="gold">gold</option>
+    	<option value="platinum">platinum</option>
+    	<option value="diamond">diamond</option>
+    	<option value="admin">admin</option>
+    </select>
+    <br/>
+    <input type="submit" value="수정">
+    <input type="button" value="이전" onclick="history.back()">
+    <input type="button" class="btn" onclick="location.href='login'" value="메인으로" />
+    
+  </form>
+</body>
+</html>

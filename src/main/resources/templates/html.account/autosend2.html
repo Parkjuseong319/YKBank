@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<body>
+	<div layout:fragment="content" style="text-align: center;">
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById("move").onclick=function(){
+				location.href="autosend3";
+			}
+		}
+	</script>
+		<h2>자동이체 등록</h2>
+		<p />
+		<textarea rows="6" cols="70%"></textarea>
+		<hr/>
+		<div>출금계좌번호</div>
+		<span>110-322-587490</span>
+		<!-- option기능들어가야함 -->
+		<input type="button" value="계좌선택"> 
+		<input type="button" value="잔액조회"> 
+		<input type="button" value="수수료면제횟수"><br />
+		<input type="checkbox">
+		<!-- checkbox기능들어가야하 -->
+		<span>추가이체 등록 시 출금계좌를 동일하게 지정</span>
+		<hr />
+		입금은행 <span>신한은행</span>
+		<!-- option기능들어가야함 -->
+		<input type="button" value="은행선택"> 
+		<input type="button" value="장애은행조회"> <br />
+		<hr />
+		입금계좌번호 <input type="text" placeholder="'-'없이 숫자만 입력"> 
+		<input type="button" value="최근입금계좌">
+		<input type="button" value="자주쓰는 입금계좌">
+		<input type="button" value="본인계좌조회">
+		<br />
+		<hr />
+		이체금액 <input type="text">원<input type="text" value="원">
+		<!-- 글자로만 출력됨 ex500,000을 입력하면 오십만 원으로 출력-->
+		<input type="button" value="이체한도조회"> <br /> 
+		<input type="button" value="100만"> 
+		<input type="button" value="50만">
+		<input type="button" value="10만"> 
+		<input type="button" value="5만"> 
+		<input type="button" value="3만"> 
+		<input type="button" value="1만"> 
+		<input type="button" value="전액">
+		<!-- 통장잔액에있는 금액 모두 입력됨 -->
+		<input type="reset" value="정정">
+		<!-- 입력한값 클리어함. -->
+
+		<br /> 이체주기 <input type="text">
+		<!-- 1개월 2개월 3개월 6개월 12개월 등등 select하게 함 -->
+		*타행이체는 이체주기 1개월만 가능<br /> *매일 이체방식은 영업일에만 이체처리됩니다.<br />
+		(토요일,일요일,공휴일의 경우 이체처리 되지 않습니다.)<br /> 이체시작일/이체종료일 <input type="date">
+		~ <input type="date"> <input type="button" value="12개월">
+		<input type="button" value="24개월"> <input type="button"
+			value="36개월">
+		<!-- 버튼누르면 현재일로부터 12개월 24개월 36개월이 연장되야됨 -->
+		<br /> 이체시작일을 기준으로 매월 이체일자 설정
+		<hr />
+		휴일이체구분 <input type="text" value="휴일익일이체">당행이체 자동이체일 경우 선택
+		<hr />
+		말일이체여부 <input type="text" value="아니오">말일이체 설정시 매달 마지막날에 이체일생
+		(예:2.28, 6.30, 7.31)
+		<input type="button" id="move" value="다음"><br/>
+		<textarea rows="10" cols="70%"></textarea>
+		<!-- 알아야될사항에대해서 기술해두었음. -->
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout3}">
+<head>
+	<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+	<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	</head>
+<body>
+
+	<div layout:fragment="content" class="container_next">
+		거래내용 확인<br /> 아래의 내용을 확인합니다.<br /> 확인버튼을 누르시면 거래가 완료됩니다.<br />
+		<div>
+			<form action="directsend4" method="post">
+			<ul> 
+				<li>거래일시 : <span th:text="${transinfo.transacted_dt}"></span></li>
+				<li>출금계좌번호 : <span th:text="${transinfo.give_account_number}"></span></li>
+				<li>입금은행 : <span th:text="${take.bank_name}"></span></li>
+				<li>입금계좌번호 : <span th:text="${transinfo.take_account_number}"></span></li>
+				<li>수취인성명 : <span th:text="${take.user_name}"></span></li>
+				<li>이체금액(원) : <span th:text="${sendmoney}"></span></li>
+				<li>수수료(원) : <span>0</span></li>
+			</ul>
+			<input type="submit" value="확인">
+			<input type="hidden" th:name="transaction_no" th:value="*{transinfo.transaction_no}">
+			<input type="hidden" th:name="sendmoney" th:value="*{sendmoney}">
+			<input type="hidden" th:name="take_account_number" th:value="*{transinfo.take_account_number}">
+			<input type="hidden" th:name="give_account_number" th:value="*{transinfo.give_account_number}">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

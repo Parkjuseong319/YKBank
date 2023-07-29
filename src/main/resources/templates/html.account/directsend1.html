@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout3}">
+<head>
+	<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+	<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script>
+				$(document).ready(function(){
+					var str = 0;
+			        $.ajax({
+			            type: "post",
+			            url: "info",
+			            dataType: "json",
+			            success: function(data) {
+			                let str = "<span>출금계좌선택 : </span><select name='selectaccount'><option>------계좌 선택------</option>";
+			                $(data.info).each(function(idx, obj) {
+			                    str += "<option value=" + obj.account_number + ">" + obj.account_number + "</option>";	
+			                });
+			                str += "</select>";
+			                $("#select").html(str);
+			                
+			            },
+			            error: function() {
+			                $("#bank").text("에러 ~");
+			            }
+			        }); 
+				$.ajax({
+					type:"post",
+					url:"info",
+					dataType:"json",
+					success:function(Datas){
+						let data = Datas.info;
+		                $(":button[name=money]").click(function() {
+						
+		                	if ($(this).val() == 1000000) {
+		                        str += parseInt(1000000);
+		                    } else if ($(this).val() == 500000) {
+		                        str += parseInt(500000);
+		                    } else if ($(this).val() == 100000) {
+		                        str += parseInt(100000)
+		                    } else if ($(this).val() == 50000) {
+		                        str += parseInt(50000)
+		                    } else if ($(this).val() == 30000) {
+		                        str += parseInt(30000)
+		                    } else if ($(this).val() == 10000) {
+		                        str += parseInt(10000)
+		                    }
+		                	
+		                    $("#sendmoney").val(str);
+		                	
+						})
+					},
+						error:function(){
+							$("#sendmoney").text("에러");
+						}
+					});
+			});
+		</script>
+		<script>
+		function sendcheck() {
+		    var frm = document.frm;
+		    if (!frm.selectaccount.value) {
+		       showModal("출금할 계좌를 선택해 주십시오.");
+		        frm.selectaccount.focus();
+		        return;
+		    }
+		    if (!frm.account_passwd.value) {
+		        showModal("계좌비밀번호를 입력해 주십시오.");
+		        frm.account_passwd.focus();
+		        return;
+		    }
+		    if (!frm.sendbank.value) {
+		       showModal("입금할 계좌의 은행을 선택해 주십시오.");
+		        frm.sendbank.focus();
+		        return;
+		    }
+		    if (!frm.account_number.value) {
+		       showModal("입금할 계좌를 입력해 주십시오.");
+		        frm.account_number.focus();
+		        return;
+		    }
+		    
+		    if (!frm.sendmoney.value) {
+		       showModal("이체할 금액을 입력해 주십시오.");
+		        frm.sendmoney.focus();
+		        return;
+		    }
+		    
+		    frm.submit();		    	
+		    
+		    
+		    function showModal(message) {
+		         var modal = document.createElement("div");
+		         modal.className = "modal";
+		         modal.innerHTML = '<div class="modal-content">' +
+		           '<div class="modal-header">' +
+		           '<span class="close">&times;</span>' +
+		           '</div>' +
+		           '<div class="modal-body">' +
+		           '<p>' + message + '</p>' +
+		           '</div>' +
+		           '</div>';
+		
+		         var closeButton = modal.querySelector(".close");
+		         closeButton.onclick = function() {
+		           modal.style.display = "none";
+		         }
+		
+		         document.body.appendChild(modal);
+		         modal.style.display = "block";
+		       }
+		 	}
+		</script>
+</head>
+<body>
+	<div layout:fragment="content" class="container_next">
+		<h4>출금정보</h4>
+		<form action="directsend2" method="post" name="frm">
+			<div id="select"></div>
+			<div>계좌비밀번호</div>
+			<input type="password" id="account_passwd" th:name="account_passwd"
+				maxlength="4" th:value="${accounst_passwd}" placeholder="비밀번호 4자리"
+				required>
+			<h4>입금정보</h4>
+			<div id="bank">
+			<span>입금은행선택 : </span>
+			<select name="sendbank" ><option>------은행 선택------</option>
+			<th:block th:each="b:${bank}">
+			<option th:name="sendbank" th:text="${b.bank_name}" th:value="*{b.bank_name}"></option>
+			</th:block>
+			</select>
+			</div>
+			<hr />
+			입금계좌번호 <input type="text" name="account_number"
+				placeholder="'-'없이 숫자만 입력">
+			<br /> <div>
+				이체금액 <input type="text" id="sendmoney" th:name="sendmoney" th:value="*{sendmoney}" placeholder="직접 입력 가능"><label for="sendmoney">원</label><br/>
+				<button type="button" name="money" value="1000000">100만</button>
+				<button type="button" name="money" value="500000">50만</button>
+				<button type="button" name="money" value="100000">10만</button>
+				<button type="button" name="money" value="50000">5만</button>
+				<button type="button" name="money" value="30000">3만</button>
+				<button type="button" name="money" value="10000">1만</button>
+				<button type="reset">초기화</button>
+			</div>
+			<br/>
+			<br />
+			<h5>최근 전화금융사기(보이스피싱) 피해가 급증하고 있으니 한번 더 확인하신 후 이체해 주시기 바랍니다.</h5>
+			<br /> <input  type="button" id="send" value="이체하기" th:onclick="javascript:sendcheck()">
+		</form>
+	</div>
+</body>
+</html>

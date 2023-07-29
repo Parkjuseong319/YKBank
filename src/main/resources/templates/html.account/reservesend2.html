@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+<head>
+	<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+	<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script type="text/javascript">
+		window.onload=function(){
+			document.getElementById('run').onclick=function(){
+				frm.submit();
+			}
+			document.getElementById('cancel').onclick=function(){
+				if(confirm("예약이체를 취소하시겠습니까?\n확인 누를 시 메인으로 돌아갑니다.")) location.href="index";
+				else return;
+			}
+		}
+	</script>
+	</head>
+<body>
+	<div layout:fragment="content" class="container_next">
+		<h3>예약이체정보</h3>
+		<form action="reservesend3" method="post" name="frm">
+			<table>
+				<tr>
+					<td>이체예정일시</td>
+					<td>출금계좌</td>
+					<td>입금은행</td>
+					<td>입금계좌</td>
+					<td>받는 분</td>
+					<td>이체금액(원)</td>
+					<td>수수료(원)</td>
+				</tr>
+				<tr>
+					<td th:text="${senddate}"></td>
+					<td th:text="${giveinfo.account_number}"></td>
+					<td th:text="${sendbank}"></td>
+					<td th:text="${takeinfo.account_number}"></td>
+					<td th:text="${takeinfo.user_name}"></td>
+					<td th:text="${sendmoney}"></td>
+					<td>0</td>
+				</tr>
+				<tr>
+					<td><input type="button" id="run" value="예약이체 실행"> <input
+						type="button" id="cancel" value="취소"></td>
+				</tr>
+			</table>
+			<input type="hidden" th:name="senddate" th:value="${senddate}">
+			<input type="hidden" th:name="sendmoney" th:value="${sendmoney}">
+			<input type="hidden" th:name="select_account" th:value="${giveinfo.account_number}">
+			<input type="hidden" th:name="account_number" th:value="${takeinfo.account_number}">
+			<input type="hidden" th:name="transaction_no" th:value="${transinfo.transaction_no}">
+		</form>
+	</div>
+</body>
+</html>

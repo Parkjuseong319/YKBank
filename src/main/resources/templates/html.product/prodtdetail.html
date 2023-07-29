@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout4}">
+<link href="css/product.css" rel="stylesheet">
+<body id="prodtdetail-page">
+	<div layout:fragment="content">
+
+		<div class="container px-4 px-lg-5">
+			<!-- 입출금, 적금 -->
+			<form action="/createpwd" method="get" th:object="${data}">
+			<th:block th:if="${data.fin_prdt_type.equals('10')}"> <!-- 입출금 -->
+				<input type="hidden" name="fin_prdt_code" th:value="${data.fin_prdt_code}">
+				<h2>[[${data.fin_prdt_nm}]]</h2><br/>
+				<div class="row">
+				<div class="col-md-3"><h5>대상</h5></div> 
+				<div class="col-md-6">실명의 개인</div>
+				<div class="col-md-3">
+				<button type="submit" class="btn btn-primary btn-sm">
+				가입하기</button>
+				</div>
+				</div>
+				<hr/>
+				<div class="row">
+				<div><h4>상세 내용</h4><br/></div>
+				<div>[[${data.prodt_detail}]]<br/><br/></div>
+				<div><h5>예금자보호</h5></div>
+				<div class="col-md-7">이 예금은 예금자 보호법에 따라 예금보험공사가 보호하되,
+				보호한도는 본 은행에 있는 귀하의 모든 예금보호 대상 금융상품의 원금과 소정의 이자를 합하여 1인당 
+				"최고 5천만원"이며, 5천만원을 초과하는 나머지 금액은 보호하지 않습니다.<br/><br/></div>
+				<div><h5>금액제한</h5></div>
+				<div class="col-md-7">없음<br/><br/></div>
+				<div><h5>기본금리</h5></div><input type="hidden" name="rate" th:value=${data.basic_rate}>
+				<div class="col-md-7">연 [[${data.basic_rate}]]%<br/><br/></div>
+				<div><h5>이자지급방법</h5></div>
+				<div class="col-md-7">이 통장의 이자는 매월 셋째주 토요일에 원금에 더하여 드립니다<br/><br/></div>
+				</div>
+			</th:block>
+			<th:block th:if="${data.fin_prdt_type.equals('20')}"> <!-- 적금 -->
+				<input type="hidden" name="fin_prdt_code" th:value="${data.fin_prdt_code}">
+				<h2>[[${data.fin_prdt_nm}]]</h2><br/>
+				<div class="row">
+				<div class="col-md-3"></div> 
+				<div class="col-md-6"></div>
+				<div class="col-md-3">
+				<button type="submit" class="btn btn-primary btn-sm">
+				가입하기</button>
+				</div>
+				</div>
+				<hr/>
+				<div class="row">
+				<div><h4>상세 내용</h4><br/></div>
+				<div>[[${data.prodt_detail}]]<br/><br/></div>
+				<div><h5>예금자보호</h5></div>
+				<div class="col-md-7">이 예금은 예금자 보호법에 따라 예금보험공사가 보호하되,
+				보호한도는 본 은행에 있는 귀하의 모든 예금보호 대상 금융상품의 원금과 소정의 이자를 합하여 1인당 
+				"최고 5천만원"이며, 5천만원을 초과하는 나머지 금액은 보호하지 않습니다.<br/><br/></div>
+				<div><h5>적금액</h5></div>
+				<div class="col-md-7">월 [[${data.max_limit}]]원<br/><br/></div>
+				<div><h5>기본금리</h5></div>
+				<div class="col-md-7">연 [[${data.basic_rate}]]%<br/><br/></div>
+				<div><h5>이자지급방법</h5></div>
+				<div class="col-md-7">이 통장의 이자는 매월 셋째주 토요일에 원금에 더하여 드립니다<br/><br/></div>
+				</div>
+			</th:block>
+			</form>
+			<!-- 대출  -->
+			<form action="/register" method="post" th:object="${data}">
+			<th:block th:if="${data.fin_prdt_type.equals('30')}">
+				<input type="hidden" name="fin_prdt_code" th:value="${data.fin_prdt_code}">
+				<input type="hidden" name="account_number" th:value="${acc}">
+				<input type="hidden" name="amount" th:value="${data.max_limit}">
+				<input type="hidden" name="rate" th:value="${data.basic_rate}">
+				<input type="hidden" name="expired" th:value="${data.expired}">
+				<h2>[[${data.fin_prdt_nm}]]</h2><br/>
+				<div class="row">
+				<div class="col-md-3"></div> 
+				<div class="col-md-6"></div>
+				<div class="col-md-3">
+				<button type="submit" class="btn btn-primary btn-sm">
+				가입하기</button>
+				</div>
+				</div>
+				<hr/>
+				<div class="row">
+				<div><h4>상세 내용</h4><br/></div>
+				<div>[[${data.prodt_detail}]]<br/><br/></div>
+				<div><h5>금액</h5></div>
+				<div class="col-md-7">[[${data.max_limit}]]원<br/><br/></div>
+				<div><h5>기본금리</h5></div>
+				<div class="col-md-7">연 [[${data.basic_rate}]]%<br/><br/></div>
+				<div><h5>기간</h5></div>
+				<div class="col-md-7">[[${data.expired}]]개월<br/><br/></div>
+				<div><h5>이자납부일</h5></div>
+				<div class="col-md-7">대출 이자는 매월 셋째주 목요일에 납부합니다<br/><br/></div>
+				</div>
+			</th:block>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

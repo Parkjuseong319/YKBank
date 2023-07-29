@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout5}">
+<head>
+<title>문의사항</title>
+<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+<link rel="stylesheet" th:href="@{css/customer.css/modal.css}" />
+<script>
+function loginChk() {
+    var frm = document.frm;
+    if (!frm.customer_email_title.value) {
+    	showModal("제목을 입력해 주십시오.");
+        frm.customer_email_title.focus();
+        return;
+    }
+    if (!frm.customer_email_content.value) {
+        showModal("내용을 입력해 주십시오.");
+        frm.customer_email_content.focus();
+        return;
+    }
+    if (!frm.customer_email_name.value) {
+    	showModal("이름을 입력해 주십시오.");
+        frm.customer_email_name.focus();
+        return;
+    }
+    if (!frm.customer_email_password.value) {
+    	showModal("비밀번호를 입력해 주십시오.");
+        frm.customer_email_password.focus();
+        return;
+    }
+    if (!frm.customer_email.value) {
+    	showModal("이메일을 입력해 주십시오.");
+        frm.customer_email.focus();
+        
+        return;
+    }else if (!emailcheck(frm.customer_email.value)) {
+    	  showModal("올바른 이메일 형식이 아닙니다.");
+    	  frm.customer_email.focus();
+    	  return;
+    	}
+    
+    
+    
+    if (!frm.customer_email_tel.value) {
+    	showModal("전화번호를 입력해 주십시오.");
+        frm.customer_email_tel.focus();
+        return;
+    }
+    if (!frm.customer_email_agree.checked) {
+    	showModal("개인정보 수집에 동의해 주십시오.");
+        frm.customer_email_agree.focus();
+        return;
+    }
+    if (!frm.customer_email_accept.checked) {
+    	showModal("이메일 수신에 동의해 주십시오.");
+        frm.customer_email_accept.focus();
+        return;
+    }
+    frm.submit();
+    
+    function showModal(message) {
+    	  var modal = document.createElement("div");
+    	  modal.className = "modal";
+    	  modal.innerHTML = '<div class="modal-content">' +
+    	    '<div class="modal-header">' +
+    	    '<span class="close">&times;</span>' +
+    	    '</div>' +
+    	    '<div class="modal-body">' +
+    	    '<p>' + message + '</p>' +
+    	    '</div>' +
+    	    '</div>';
+
+    	  var closeButton = modal.querySelector(".close");
+    	  closeButton.onclick = function() {
+    	    modal.style.display = "none";
+    	  }
+
+    	  document.body.appendChild(modal);
+    	  modal.style.display = "block";
+    	}
+    
+    function emailcheck(email) {
+    	  const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    	  return re.test(String(email).toLowerCase());
+    	}
+    
+}
+</script>
+<body>
+	<div layout:fragment="content">
+		<div class="container_next">
+			<h3>이메일 문의</h3><br/>
+			<form name="frm" th:action="@{/mailconsult}" method="post">
+			
+			<label for="customer_email_title">제목:</label>
+ 		    <input type="text" id="customer_email_title" name="customer_email_title" >
+
+      		<label for="customer_email_content">내용:</label>
+      		<textarea name="customer_email_content" ></textarea>
+			
+			
+			<label for="customer_email_name">이름:</label>
+			<input type="text"name="customer_email_name" >
+
+			<label for="customer_email_password">비밀번호:</label>
+			<input type="password"name="customer_email_password" >
+
+			<label for="customer_email">이메일:</label>
+			<input type="email" name="customer_email" >
+
+			<label for="customer_email_tel">전화번호:</label>
+			<input type="text" name="customer_email_tel" >
+
+			<label for="customer_email_agree">개인정보동의:
+			<input type="checkbox" name="customer_email_agree" ></label>
+
+			<label for="customer_email_accept">이메일 수신 동의:
+			<input type="checkbox" name="customer_email_accept"></label>
+
+			<input type="button" value="전송하기" class="btn" onclick="loginChk()">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

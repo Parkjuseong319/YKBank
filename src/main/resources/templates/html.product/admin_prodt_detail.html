@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout7}">
+<link href="css/product.css" rel="stylesheet">
+<body>
+	<div layout:fragment="content">
+		<div class="container px-4 px-lg-5">
+			** 상품 등록 **<br /><!-- 관리자 상품수정 페이지 -->
+			<form action="/updateprodt" th:object="${data}">
+				상품 코드 : <input type="text" name="fin_prdt_code" th:value="${data.fin_prdt_code}" readonly="readonly"><br />
+				금융회사명 : <input type="text" name="kor_co_nm" value="ykbank"><br />
+				상품 유형 : <select name="fin_prdt_type" >
+					<option value="10">입출금</option>
+					<option value="20">적금</option>
+					<option value="30">대출</option>
+				</select><br /> 
+				상 품 명 : <input type="text" name="fin_prdt_nm" th:value="${data.fin_prdt_nm}"><br />
+				기본 금리 : <input type="number" step="0.1" min="0" max="99" name="basic_rate" th:value="${data.basic_rate}"><br /> 
+				최고 한도 : <input type="text" name="max_limit" th:value="${data.max_limit}"><br /> 
+				상품상세설명 : <textarea name="prodt_detail" th:value="${data.prodt_detail}" th:text="${data.prodt_detail}"></textarea> <br />
+				가입기간 : <input type="number" name="expired" min="0" max="60" th:value="${data.expired}"> <br />
+				<input type="submit" value="수정"/> <input type="button" onclick="history.back()" value="뒤로가기">
+			</form>
+		</div>
+	</div>
+</body>
+</html>

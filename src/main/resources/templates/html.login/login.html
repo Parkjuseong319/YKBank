@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	 xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/layout7}">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIGNUP</title>
+<!-- <link rel="stylesheet" type="text/css" href="../css/login.css" /> -->
+<link rel="stylesheet" th:href="@{/css/login.css}">
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+Kakao.init('be2f3e458c1bb1a568c295380fa8a2c4'); //발급받은 키 중 javascript키를 사용해준다.
+console.log(Kakao.isInitialized()); // sdk초기화여부판단
+//카카오로그인
+function kakaoLogin() {
+    Kakao.Auth.login({
+      success: function (response) {
+        Kakao.API.request({
+          url: '/v2/user/me',
+          success: function (response) {
+        	  console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+      },
+      fail: function (error) {
+        console.log(error)
+      },
+    })
+}  
+	
+</script>
+<script th:inline="javascript">
+$(document).ready(function() {
+	  // 서버에서 받아온 showModalVar 값을 설정한다.]
+	  
+	  var showModalVar = [[${showModalVar}]];
+	  if (showModalVar === "" || showModalVar === "fail") {
+	    showModal("아이디 또는 비밀번호가 틀렸습니다.");
+	  }
+	  
+	  function showModal(message) {
+	    var modal = document.createElement("div");
+	    modal.className = "modal";
+	    modal.innerHTML = '<div class="modal-content">' +
+	        '<div class="modal-header">' +
+	        '<span class="close">&times;</span>' +
+	        '</div>' +
+	        '<div class="modal-body">' +
+	        '<p>' + message + '</p>' +
+	        '</div>' +
+	        '</div>';
+
+	    var closeButton = modal.querySelector(".close");
+	    closeButton.onclick = function () {
+	        modal.style.display = "none";
+	    }
+
+	    document.body.appendChild(modal);
+	    modal.style.display = "block";
+	}
+})
+</script>
+
+<link rel="stylesheet" th:href="@{css/modal.css}" />
+</head>
+<body id="login-page">
+	<div layout:fragment="content">
+		<div class="container-fluid">
+		   <div class="col-md-4 login-section__item d-flex flex-column justify-content-center align-items-center">
+		        <h3 class="login-section__title">공인인증서 로그인</h3><br/>
+		        <a href="#" class="btn mt-4">준비중 입니다.</a>
+		   </div>
+		   <div class="col-md-4 login-section__item d-flex flex-column justify-content-center align-items-center">
+		        <h3 class="login-section__title">간편 로그인</h3><br/>
+		        <a href="javascript:void(0)" class="btn mt-4">준비중 입니다.</a>
+		   </div>
+		   <div class="col-md-4 login-section__item d-flex flex-column justify-content-center align-items-center">
+		        <h3 class="login-section__title">회원 로그인</h3>
+		        <form th:action="@{loginSuccess}" method="post">
+		          <input type="text" name="user_id" class="form-style" placeholder="이용자 ID" id="user_id">
+		          <input type="password" name="user_passwd" class="form-style" placeholder="비밀번호" id="user_passwd">
+		          <span class="login-btn-wrapper">
+					  <button type="submit" class="btn btn-primary mt-4">로그인</button>
+					</span>
+		          <a th:href="@{passwordfind}" class="link">아이디 찾기 / 비밀번호 찾기</a>
+		          <a th:href="@{signup}" class="link">회원가입</a>
+		        </form>
+		   </div>
+		   <hr class="mt-5">
+		   <p class="text-center"></p>
+		</div>
+		<br/><br/><br/>
+		<div >
+		</div>
+	</div>
+</body>
+</html>

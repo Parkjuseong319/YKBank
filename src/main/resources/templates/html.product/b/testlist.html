@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}"
+	  >
+
+<body>
+	<!-- 관리자 임시 -->
+	<div layout:fragment="content">
+	<a th:href="@{/testinsert_admin}">상품 추가</a>
+	<div class="search-form wow fadeInUp" data-wow-delay=".7s"
+		style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-12 p-0">
+				<div class="search-input">
+					<label for="keyword"><i
+						class="lni lni-search-alt theme-color"></i></label> <input type="text"
+						name="keyword" id="keyword" placeholder="검색하시오">
+				</div>
+			</div>
+
+			<div class="col-lg-2 col-md-2 col-12 p-0">
+				<div class="search-btn button">
+					<button class="btn">
+						<i class="lni lni-search-alt"></i> search
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<tr>
+		<td colspan="5">
+			<form action="/searchProdt" method="get">
+				<input type="text" name="searchValue" placeholder="검색어를 입력하세요" /> <input
+					type="submit" value="검 색">
+			</form>
+		</td>
+	</tr>
+	<h3>상품 목록</h3>
+	<form action="/testdetail" method="get">
+		<div th:each="data:${datas}">
+			<!-- 입출금 -->
+			<th:block th:if="${data.fin_prdt_type.equals('10')}">
+				<div>
+					<table>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.fin_prdt_nm }]]</a></td>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.basic_rate}]]%</a></td>
+						</tr>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.prodt_detail }]]</a></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</th:block>
+		</div>
+		<hr />
+		<hr />
+		<div th:each="data:${datas}">
+			<!-- 예금 -->
+			<th:block th:if="${data.fin_prdt_type.equals('20')}">
+				<div>
+					<table>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.fin_prdt_nm }]]</a></td>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.basic_rate}]]%</a></td>
+						</tr>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.prodt_detail }]]</a></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</th:block>
+		</div>
+		<hr />
+		<hr />
+		<!-- 적금 -->
+		<div th:each="data:${datas}">
+			<th:block th:if="${data.fin_prdt_type.equals('30')}">
+				<div>
+					<table>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.fin_prdt_nm }]]</a></td>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.basic_rate}]]%</a></td>
+						</tr>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.prodt_detail }]]</a></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</th:block>
+		</div>
+		<hr />
+		<hr />
+		<div th:each="data:${datas}">
+			<!-- 대출 -->
+			<th:block th:if="${data.fin_prdt_type.equals('40')}">
+				<div>
+					<table>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.fin_prdt_nm }]]</a></td>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.basic_rate}]]%</a></td>
+						</tr>
+						<tr>
+							<td><a
+								th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">
+									[[${data.prodt_detail }]]</a></td>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+			</th:block>
+			<th:block th:if="${data.fin_prdt_type.equals('40') == null}">
+	현재 상품이 없습니다
+	</th:block>
+		</div>
+	</form>
+	</div>
+</body>
+</html>

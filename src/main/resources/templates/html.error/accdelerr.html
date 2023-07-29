@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> <!-- 계좌 해지 에러 -->
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Error-YK BANK.</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Web Font -->
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap}"
+        rel="stylesheet">
+  <link th:href="@{https://fonts.googleapis.com/css2?family=Lato&display=swap}" rel="stylesheet">
+  <!-- ========================= CSS here ========================= -->
+  <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+  <link th:href="@{/css/LineIcons.2.0.css}" rel="stylesheet" />
+  <link th:href="@{/css/animate.css}" rel="stylesheet" />
+  <link th:href="@{/css/tiny-slider.css}" rel="stylesheet" />
+  <link th:href="@{/css/glightbox.min.css}" rel="stylesheet" />
+  <link th:href="@{/css/main.css}" rel="stylesheet" />
+</head>
+<body>
+  <div class="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-icon">
+          <span></span>
+          <span></span>
+      </div>
+  </div>
+</div>
+<!-- 에러페이지 -->
+<div class="error-area">
+  <div class="d-table">
+    <div class="d-table-cell">
+      <div class="container">
+        <div class="error-content">
+          <h1>ERROR</h1>
+          <h2>Here Is Some Problem</h2>
+          <p>죄송합니다. 상환할 대출이 남아있어 해지할 수 없습니다.<br>
+             아래 홈버튼을 눌러 홈으로 이동해주시길 바랍니다.</p>
+          <div class="button">
+            <a th:href="@{/}" class="btn">Go To Home</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 에러끝 -->
+
+<!-- ========================= JS here ========================= -->
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/tiny-slider.js}"></script>
+<script th:src="@{/js/glightbox.min.js}"></script>
+<script th:src="@{/js/wow.min.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+</body>
+</html>

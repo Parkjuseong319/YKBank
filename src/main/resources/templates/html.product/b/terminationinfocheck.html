@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+</head>
+<body>
+<div layout:fragment="content">
+<script type="text/javascript">
+window.onload = function(){
+	document.getElementById("termination").onclick = function(){
+		if(confirm("해지하시겠습니까?")){
+			location.href="termination_result.html";
+		}
+	}
+	
+}
+</script>
+<div class="box_type1">
+		<ul class="list_type1">
+			<li>선택한 상품이 맞는지 잘 확인하시고 해지 신청하시기 바랍니다.</li>
+		</ul>
+	</div>
+	<form action="termination_result.html" name="frm">
+	<table class="tType02" summary="계좌정보">
+		<colgroup>
+			<col width="20%" />
+			<col />
+		</colgroup>
+		<tbody>
+			<tr class="first">
+				<th scope="row">해지계좌번호</th>
+				<td>13215-121-5484</td>
+			</tr>
+			<tr>
+				<th scope="row">해지계좌명</th>
+				<td>YK통장</td>
+			</tr>
+			<tr>
+				<td>
+					입금 계좌번호
+				</td>
+				<td>
+					전에 선택한 계좌 번호 뜨는 공간
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" value="해지하기" id="termination">&nbsp;&nbsp;
+				<input type="button" value="취소" onclick="location.href='deposit_check.html'"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</div>
+</body>
+</html>

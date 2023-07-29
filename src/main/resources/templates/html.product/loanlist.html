@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout4}">
+<link href="css/product.css" rel="stylesheet">
+<body id="loanlist-page">
+	<div layout:fragment="content">
+
+		<div class="container px-4 px-lg-5">
+			<!-- #################### -->
+			<!-- 대출 상품 중 가장 최신상품 -->
+			<!-- #################### -->
+			<form action="/prodtdetail" method="get">
+				<div class="row gx-4 gx-lg-5 align-items-center my-5">
+					<div class="col-lg-7">
+						<a th:href="@{/prodtdetail(fin_prdt_code=${rdata.fin_prdt_code})}">
+							<img class="img-fluid rounded mb-4 mb-lg-0"
+							src="images\product\loan.png" alt="...">
+						</a>
+					</div>
+					<div class="col-lg-5">
+						<h1 class="font-weight-light">
+							<a th:href="@{/prodtdetail(fin_prdt_code=${rdata.fin_prdt_code})}">
+								[[${rdata.fin_prdt_nm}]]</a>
+						</h1>
+						<br />
+						<div class="row">
+							<div class="col-md-8 col-sm-6 b">[[${rdata.prodt_detail}]]</div>
+							<div class="col-md-4 col-sm-6 b">기본 [[${rdata.basic_rate}]]%</div>
+						</div>
+						<br /> <a class="btn btn-primary"
+							th:href="@{/prodtdetail(fin_prdt_code=${rdata.fin_prdt_code})}">보러가기</a>
+					</div>
+				</div>
+			</form>
+			<!-- ################### -->
+			<!-- 검색창 + 전체상품목록 버튼 -->
+			<!-- ################### -->
+			<form action="/search" method="get">
+				<div class="search-form wow fadeInUp" data-wow-delay=".7s"
+					style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+					<div class="row">
+						<div class="col-lg-4 col-md-4 col-12 p-1">
+							<div class="search-input">
+								<label for="keyword"><i
+									class="lni lni-search-alt theme-color"></i></label> <input type="text"
+									name="search" id="search" placeholder="검색어를 입력하세요">
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-12 p-1">
+							<div class="search-btn button">
+								<button class="btn">
+									<i class="lni lni-search-alt"></i> search
+								</button>
+							</div>
+						</div>
+						<!-- 
+					<div class="col-lg-2 col-md-2 col-12 p-1">
+						<div class="search-btn button">
+							<a th:href="@{/allprdtlist}">
+								<button class="btn">
+									전체상품보기</button>
+							</a>
+						</div>
+					</div>
+					 -->
+					</div>
+				</div>
+			</form>
+			<br />
+			<!-- ######## -->
+			<!-- 대출 신상품 -->
+			<!-- ######## -->
+			<div class="row gx-4 gx-lg-5">
+				<div class="col-md-4 mb-5" th:each="data:${datas}">
+					<form action="/prodtdetail" method="get">
+						<div class="card" style="height: 15rem;">
+							<div class="card-body">
+								<!-- 대출 -->
+								<h3><a th:href="@{/prodtdetail(fin_prdt_code=${data.fin_prdt_code})}">[[${data.fin_prdt_nm}]]</a></h3><br/>
+								<div class="row">
+									<div class="col-md-8"><a th:href="@{/prodtdetail(fin_prdt_code=${data.fin_prdt_code})}">[[${data.prodt_detail}]]</a></div>
+									<div class="col-md-4 text-end">기본 [[${data.basic_rate}]]%<br/>[[${data.expired}]]개월</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<a class="btn btn-primary btn-sm" th:href="@{/prodtdetail(fin_prdt_code=${data.fin_prdt_code})}">보러가기</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- 전체 상품 목록 -->
+			<h5><a th:href="@{/allprdtlist}">전체 상품 보러가기 >></a></h5><br/>
+		</div>
+	</div>
+</body>
+</html>

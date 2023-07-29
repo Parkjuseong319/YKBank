@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout7}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="content" >
+	<div class="container_next" >
+		<h1 th:text="|${user_name} 님의 계좌 목록|"></h1>	
+		<table border="1" class="show-account-list">
+			<thead>
+				<tr>
+					<th>일련번호</th>
+					<th>계좌종류</th>
+					<th>계좌번호</th>
+					<th>개설일자</th>
+					<th>만기일</th>
+					<th>잔액</th>
+					<th>계좌상태</th>
+				</tr>
+				<!-- 
+				 -->
+			</thead>
+			<tbody th:if="${userAccountList != null}">
+				<tr th:each="data:${userAccountList}">
+					<td>[[${data.account_no}]]</td>
+					<td>[[${data.fin_prdt_nm}]]</td>
+					<td><a th:href="@{/showAccountDetail(account_no=${data.account_no})}" th:text="|${data.account_number} (거래내역확인)|"></a></td>
+					<td>[[${data.account_reg_date}]]</td>
+					<td>[[${data.account_un_reg_date}]]</td>
+					<td>[[${data.account_balance}]]</td>
+					<td>
+					<form method="post" name="frm" th:action="@{upAccountStatus}">
+						<input type="hidden" th:value="${data.account_no}" name="account_no">
+						<input type="hidden" th:value="${data.user_no}" name="user_no">
+						<select name="account_status">
+							
+							<th:block th:if="${data.account_status=='IN_USE'}">
+								<option th:value="${data.account_status=='IN_USE'}" selected>사용중</option>
+								<option value="DELETE_REQ" >휴면계좌</option>
+								<option value="DELETED">해지계좌</option>
+							</th:block>
+							<th:block th:if="${data.account_status=='DELETE_REQ'}">
+								<option th:value="${data.account_status=='DELETE_REQ'}">휴면계좌</option>
+								<option value="IN_USE" >사용중</option>
+								<option value="DELETED">해지계좌</option>
+							</th:block>
+							<th:block th:if="${data.account_status=='DELETED'}">
+								<option th:value="${data.account_status=='DELETED'}">해지계좌</option>
+								<option value="IN_USE" >사용중</option>
+								<option value="DELETE_REQ">휴면계좌</option>
+							</th:block>
+						</select>
+						<input type="submit" value="수정">
+					</form>
+					</td>
+				</tr>
+			</tbody>
+			<tbody th:if="${userAccountList.size == 0}">
+				<tr>
+					<td colspan="7" th:text="|계좌목록이 없습니다.|"></td>
+				</tr>
+			</tbody>	
+		</table>
+	</div>
+</div>
+</body>
+</html>

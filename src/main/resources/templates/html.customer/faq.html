@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout5}">
+<head>
+<meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
+	
+<title>FAQ</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+		const toggles = document.querySelectorAll(".faq-toggle");
+		
+		toggles.forEach((toggle) => {
+		  toggle.addEventListener("click", () => {
+		    toggle.parentNode.classList.toggle("active");
+		  });
+		});
+		$("#faq_ajax").html(null);
+		function loadFaq(category) {
+			  $.ajax({
+			    type: "post",
+			    url: "/faqlist",
+			    data: { "category": category },
+			    success: function (faqList) {
+			        let str = "";
+			        let datas = faqList.datas;
+			        $(datas).each(function(idx,obj){
+		                    str += " <div class='faq'>";
+		                    str += "<h5 class='faq-title'>" + obj.customer_faq_question + "</h5>";
+		                    str += "<p class='faq-text'>" + obj.customer_faq_answer + "</p>";
+		                    str += "</div>";
+			        });
+			        if (faqList.datas.length === null || faqList.datas.length === undefined || faqList.datas.length === 0) {
+		                str += " <div class='faq'>";
+		                str += "<h5 class='faq-title'>입력된 자료가 없습니다.</h5>";
+		                str += "<p class='faq-text'>입력된 자료가 없습니다.</p>";
+		                str += "</div>";
+		            } 
+					$("#faq_ajax").html(str);
+			    },
+			    error: function () {
+			      alert("FAQ를 로드하는 데 실패했습니다.");
+			    },
+			  });
+			}
+</script>
+	
+<link rel="stylesheet" th:href="@{css/customer.css/faqcss.css}" />
+</head>
+<body>
+	<div layout:fragment="content">
+	<h3>자주 묻는 질문</h3> 
+	<div th:if="${session.user_level} == 'admin' " >
+		<div class="faq-container">
+			<input class="button_1" type="button" th:onclick="|location.href='@{faqinsert}'|" value="자료입력">
+		</div>
+		<br/><br/>
+	</div>
+	<form  id="frm" th:object="${customer_faq_category}">
+		<div class="faq-container">
+			<button type="button" class="button" onclick="loadFaq('조회/출금')">조회/출금</button>
+			<button type="button" class="button" onclick="loadFaq('예금/적금/대출')">예금/적금/대출</button>
+			<button type="button" class="button" onclick="loadFaq('민원처리')">민원처리</button>
+			<button type="button" class="button" onclick="loadFaq('홈페이지')">홈페이지</button>
+		</div>
+	</form>
+	<div class="faq-container" id="faq_ajax" th:if="${data!='null'}">
+      <div th:each="data : ${datas}">
+         <div class="faq" >
+               <h5 class="faq-title" th:text="${data.customer_faq_question}"></h5>
+               <p class="faq-text" th:text="${data.customer_faq_answer}"></p>
+	         </div>
+	      </div>
+		</div>
+	</div>
+</body>
+</html>

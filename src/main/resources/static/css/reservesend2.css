@@ -1,0 +1,77 @@
+.reservesend2-page {
+  margin: auto;
+  width: 80%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+}
+
+h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+table td, table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+#run, #cancel {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+#cancel {
+  background-color: #f44336;
+}
+
+#run:hover, #cancel:hover {
+  background-color: #3e8e41;
+}
+
+@media screen and (max-width: 600px) {
+  table, tr, td {
+    display: block;
+  }
+
+  tr {
+    margin-bottom: 10px;
+  }
+
+  td {
+    border: none;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  td:before {
+    position: absolute;
+    left: 6px;
+    content: attr(data-label);
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+#run,
+#cancel {
+  display: inline-block;
+  margin-right: 10px;
+}

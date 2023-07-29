@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout4}">
+<link href="css/product.css" rel="stylesheet">
+<body id="allprdtlist-page">
+	<div layout:fragment="content">
+		<div class="container px-4 px-lg-5">
+			<!-- ######## -->
+			<!-- 전체상품목록 -->
+			<!-- ######## -->
+			<div class="row gx-4 gx-lg-5">
+				<div class="col-md-4 mb-5" th:each="data:${datas}">
+					<form action="/prodtdetail" method="get">
+						<div class="card" style="height: 15rem;">
+							<div class="card-body">
+								<h3><a th:href="@{/prodtdetail(fin_prdt_code=${data.fin_prdt_code})}">[[${data.fin_prdt_nm}]]</a></h3><br/>
+								<div class="row">
+									<div class="col-md-8"><a th:href="@{/prodtdetail(fin_prdt_code=${data.fin_prdt_code})}">[[${data.prodt_detail}]]</a></div>
+									<div class="col-md-4 text-end">기본 [[${data.basic_rate}]]%</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<a class="btn btn-primary btn-sm" th:href="@{/prodtdetail(fin_prdt_code=${data.fin_prdt_code})}">보러가기</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

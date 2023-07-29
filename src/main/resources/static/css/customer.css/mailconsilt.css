@@ -1,0 +1,116 @@
+.container_next {
+	width: 40%;
+	margin: 50px auto;
+	padding: 20px;
+	background-color: #f2f2f2;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+}
+
+textarea {
+	width: 100%;
+	height: 160px;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+	background-color: #fff;
+	resize: none;
+}
+
+h1 {
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+label {
+	display: block;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+input[type="text"], input[type="email"], input[type="password"] {
+	width: 100%;
+	padding: 10px;
+	margin-bottom: 20px;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	font-size: 16px;
+	line-height: 1.5;
+	color: #333;
+	background-color: #fff;
+}
+
+input[type="checkbox"] {
+	margin-right: 10px;
+}
+
+.btn {
+	display: block;
+	margin: 30px auto 0;
+	padding: 10px 20px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+.btn_1 {
+	margin: 30px auto 0;
+	padding: 10px 20px;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+.btn:hover {
+	background-color: #555;
+}
+
+.modal {
+  display: none; /* 모달창은 초기에 화면에서 숨김 */
+  position: fixed; /* 절대 위치 */
+  z-index: 1; /* 다른 요소들보다 앞에 보이도록 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* 배경 색상, 반투명 */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 화면 중앙에 위치 */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}

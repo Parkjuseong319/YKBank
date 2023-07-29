@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+<h3>상품 목록</h3>
+<a th:href="@{/testinsert}">상품 추가</a>
+<table border="1">
+	<tr>
+	<th>상품 코드</th><th>상품 유형</th><th>상품명</th>
+	</tr>
+	<th:block th:if="${datas.size > 0}">
+		<tr th:each="data:${datas}">
+			<td>[[${data.fin_prdt_code }]]</td>
+			<td>[[${data.fin_prdt_type }]]</td>
+			<td><a th:href="@{/testdetail(fin_prdt_code=${data.fin_prdt_code})}">[[${data.fin_prdt_nm}]]</a></td>
+		</tr>
+	</th:block>
+</table>
+</body>
+</html>

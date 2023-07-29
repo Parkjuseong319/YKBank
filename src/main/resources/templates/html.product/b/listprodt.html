@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+<body>
+<div layout:fragment="content">
+	<div class="">
+		<h2 class="">인기상품</h2>
+		<div class="">
+			<!-- ### 상품슬라이더 : 컨텐츠 ### -->
+			<div class="">
+
+				<!-- 섹션1 : 예금 -->
+				<div>
+					<!-- # 상단문구 # -->
+					<h3 class="">예금인기상품</h3>
+					<p class="">
+						<strong>YK 고객님이 선택한 <span>BEST 인기상품</span></strong> 가장 많이 사랑받은 인기상품입니다.
+					</p>
+					<a href="#none" class=""onclick="">예금 상품 보기</a>
+
+					<!-- # 상품목록 # -->
+					<ul class=" pro1">
+						<li><em class="">예금 BEST</em> <strong class=""><span>연 1.5% 비상금 이율과 출금·이체수수료 횟수제한 없이 면제!</span><b>YK마이핏통장</b></strong>
+							<div class="">
+								최고 연<strong>1.5%</strong>
+
+							</div> <a href="#none"onclick="">상세정보</a>
+						</li>
+
+						<li><em class="">예금 BEST</em> <strong class=""><span>내 집 마련의 시작</span><b>주택청약종합저축</b></strong>
+							<div class="">최고 연<strong>2.1%</strong><span>(24개월)</span>
+
+							</div> <a href="#none"onclick="">상세정보</a>
+						</li>
+
+						<li><em class="">예금 BEST</em> <strong class=""><span>누구나 쉽게 우대받는 DIY</span><b>YK내맘대로적금</b></strong>
+							<div class="">
+								최고 연<strong>3.75%</strong><span>(36개월)</span>
+							</div> <a href="#none"onclick="">상세정보</a>
+						</li>
+					</ul>
+
+					<!-- # 하단문구 # -->
+					<div class="">
+						<p>2023.03.25 기준, 세금공제전, 우대금리포함</p>
+					</div>
+				</div>
+
+
+				<!-- 섹션2 : 대출 -->
+				<div>
+					<!-- # 상단문구 # -->
+					<h2 class="">대출인기상품</h2>
+					<p class="">
+						<strong>YK 고객님이 선택한 <span>BEST 인기상품</span></strong> 가장 많이 사랑받은 인기상품입니다.
+					</p>
+					<a href="#none" class="" onclick="">대출 상품 보기</a>
+
+					<!-- # 상품목록 # -->
+					<ul class=" pro3">
+
+						<li><em class="">대출 BEST</em> <strong class=""><span>직장인이라면</span><b>YK 직장인든든 신용대출</b></strong>
+							<div class="">최고<strong><span>3억원</span></strong>
+							</div> <a href="#none"onclick="">상세정보</a>
+						</li>
+
+						<li><em class="">대출 BEST</em> <strong class="title"><span>고객님의
+									전세금을 지원하는</span><b>YK 주택전세자금대출 (은행재원 협약보증)</b></strong>
+							<div class="">
+								최고<strong><span><span>4</span>억<span>4</span>천<span>4</span>백만원</span></strong>
+							</div> <a href="#none" onclick="">상세정보</a>
+						</li>
+
+						<li><em class="">대출 BEST</em> <strong class="title"><span>신차
+									구매 자금도 은행방문 없이!</span><b>YK 매직카대출(신차 구매用)</b></strong>
+							<div class="">
+								최고<strong><span><span>6</span>천만원</span></strong>
+							</div> <a href="#none" onclick="">상세정보</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+
+			<!-- ### 상품슬라이더 : 컨트롤 ### -->
+			<div class="area-control">
+				<button class="ui-btn before">이전상품목록</button>
+				<ul>
+					<li><a href="#none" class="on">인기상품(예금)</a></li>
+					<li><a href="#none">인기상품(대출)</a></li>
+				</ul>
+				<button class="ui-btn play">자동재생시작</button>
+				<button class="ui-btn stop">자동재생멈춤</button>
+				<button class="ui-btn next">다음상품목록</button>
+			</div>
+
+			<!-- ### 상품슬라이더 : 스크립트호출 ### -->
+			<script type="text/javascript">
+				$(".visual-submain .wrap-slider").moveContents(
+						{
+							eventEl : ".area-control > ul > li > a",
+							conEl : ".area-con > div",
+							changeTimer : 8000,
+							changeCallBack : function(a) {
+								$('.section-main.visual-submain')
+								.attr('class','section-main visual-submain active' + a);
+							}
+						});
+			</script>
+		</div>
+	</div>
+
+<div class="" id="">
+	<div class="">
+		<!-- # 기본정보 # -->
+		<h2>상품검색</h2>
+		<fieldset>
+			<legend>상품검색</legend>
+			<div class="">
+				<div class="">
+					<input id="" type="text" class="" title="검색어" maxlength="30" onkeypress=""/>
+					<span id="">검색어를 입력하세요.</span>
+				</div>
+				<button type="button" class="">검색어삭제</button>
+				<button type="submit" class="" onclick="">검색</button>
+			</div>
+		</fieldset>
+	</div>
+	<!--검색결과 -->
+	<div id="" style="display:none" class="">	 
+		<!-- # 결과목록 # -->
+		<ul id="" class="" >
+			<li></li>
+		</ul>
+	</div>
+	<div class="">
+		<h2>추천상품</h2>
+		<p>나에게 맞는 추천 상품은? <br/>#직장인 #Youth #골든라이프 <a href="#none"  onclick="" class="" title="추천상품 바로가기">바로가기</a></p>
+	</div>
+	<div>
+	<a href="deposit.html">예금 검색</a>
+	</div>
+</div>
+</div>
+</body>
+</html>

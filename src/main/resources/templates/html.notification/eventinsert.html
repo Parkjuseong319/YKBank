@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout6}">
+<head>
+<title>FAQ</title>
+<link rel="stylesheet" th:href="@{css/admin.css/faqinsert.css}" />
+</head>
+<body id="eventinsert-page">
+	<div layout:fragment="content">
+	
+	<div class="container_faq">
+		<h1>이벤트</h1>
+		<form class="search-form" th:action="@{eventinsert}" method="post">
+			<input class = "question-input"type="text" name="event_title" placeholder="제목">
+			<textarea class="answer-input" name="event_content" placeholder="내용" rows="6"></textarea>
+			<input type="submit" value="등록">
+		</form>
+	</div>
+	</div>
+</body>
+</html>

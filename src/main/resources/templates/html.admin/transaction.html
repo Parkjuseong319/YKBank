@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout7}">
+<head>
+   <title>YKBBANK</title>
+   <link rel="stylesheet" th:href="@{css/customer.css/checkmail.css}" />
+   <link rel="stylesheet" th:href="@{css/paging.css}" />
+</head>
+<body>
+   <div layout:fragment="content" >
+   <br/><br/><br/><br/><br/><br/>
+      <div class="container_next" >
+         <h2>예약이체 신청 목록</h2>
+         <table border= "1" >
+            <thead>
+               <tr>
+                  <th>신청 번호</th><th>거래번호</th><th>신청 I D</th><th>출금계좌</th><th>입금계좌</th><th>처리상태</th><th>등록일</th><th>신청 이체일</th><th>처리</th>
+               </tr>
+            </thead>
+            <tbody>
+               <th:block th:each="data : ${datas}">
+               <tr th:if="${data.transaction_status !='REMIT_COMPLETE'}">
+                  <td>[[${data.remit_no}]]</td>
+                  <td>[[${data.transaction_no}]]</td>
+                  <td>[[${data.user_id}]]</td>
+                  <td>[[${data.give_account_number}]]</td>
+                  <td>[[${data.take_account_number}]]</td>
+                  <td>[[${data.transaction_status}]]</td>
+                  <td>[[${data.transacted_date}]]</td>
+                  <td>[[${data.transaction_deadline}]]</td>
+                  <td><a th:href="@{/reserve(remit_no=${data.remit_no})}" th:text="|처리하기|"></a>
+                  </td>
+               </tr>
+               </th:block>
+            </tbody>
+         </table>
+         </div>
+      </div>
+   </body>
+</html>

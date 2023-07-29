@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+   xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{layouts/layout7}">
+<head>
+<title>회원관리</title>
+ <link rel="stylesheet" th:href="@{css/admin.css/about.css}" />
+</head>
+<body id="adminmanage-page">
+ 	<div layout:fragment="content">
+		 <h2>회원 목록</h2>
+	    <table border="1">
+	    	<tr>
+	        	 <th>고객 I  D</th><th>고  객  명</th><th>고객이메일</th><th>고객 등급</th><th>수정</th>
+	        </tr>
+	        <tr th:each="data:${datas}">
+			<td>[[${data.user_id}]]</td>
+			<td>[[${data.user_name}]]</td>
+			<td>[[${data.user_email}]]</td>
+			<td>[[${data.user_level}]]</td>
+			<td>
+			<a th:href="@{/update(user_id=${data.user_id})}">수정</a>
+			</td>
+		</tr>
+	    </table>
+    </div>
+</body>
+</html>

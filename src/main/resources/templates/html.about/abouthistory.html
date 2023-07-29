@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout3}">
+<head>
+<title>Line Chart Example</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<style>
+#chart-container {
+	width: 800px;
+	height: auto;
+	margin: auto;
+	text-align: center;
+}
+
+#chart-buttons {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.chart-button {
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	border-radius: 5px;
+}
+
+.chart-button:hover {
+	background-color: #3e8e41;
+}
+</style>
+</head>
+<body id="chart-page">
+	<div layout:fragment="content">
+
+		<div id="chart-container">
+			<h2>YKBANK 정보</h2>
+			<canvas id="line-chart"></canvas>
+		</div>
+
+		<div id="chart-buttons">
+			<button class="chart-button" onclick="showDepositWithdraw()">자산정보</button>
+			<button class="chart-button" onclick="showDepositLoan()">예금/적금/대출</button>
+			<button class="chart-button" onclick="showJoinWithdrawTotal()">가입/탈퇴/총인원수</button>
+		</div>
+		<script>
+			showJoinWithdrawTotal();
+			function showJoinWithdrawTotal() {
+				$
+						.ajax({
+							url : '/abouthistory',
+							type : 'POST',
+							dataType : 'json',
+							success : function(response) {
+								// 서버에서 받은 데이터를 가공해서 차트 데이터에 적용
+								var chartData = {
+									'가입' : [],
+									'탈퇴' : [],
+									'총인원수' : []
+								};
+								var labels = [];
+								for (var i = 0; i < response.datas.length; i++) {
+									var data = response.datas[i];
+									chartData['가입']
+											.push(parseInt(data.chart_join));
+									chartData['탈퇴']
+											.push(parseInt(data.chart_withdrawal));
+									chartData['총인원수']
+											.push(parseInt(data.chart_total_person));
+									labels.push(data.chart_date);
+								}
+								lineChart.data.datasets = Object
+										.keys(chartData)
+										.map(
+												function(key) {
+													return {
+														label : key,
+														data : chartData[key],
+														fill : false,
+														borderColor : key === '가입' ? 'rgb(75, 192, 192)'
+																: key === '탈퇴' ? 'rgb(255, 99, 132)'
+																		: 'rgb(180, 40, 132)',
+														lineTension : 0.1
+													};
+												});
+								lineChart.data.labels = labels;
+								lineChart.update();
+							},
+							error : function(xhr, status, error) {
+								console.log('Error:', error);
+							}
+						});
+			}
+
+			function showDepositLoan() {
+				$
+						.ajax({
+							url : '/abouthistory',
+							type : 'POST',
+							dataType : 'json',
+							success : function(response) {
+								// 서버에서 받은 데이터를 가공해서 차트 데이터에 적용
+								var chartData = {
+									'총가입량' : [],
+									'적금' : [],
+									'대출' : []
+								};
+								var labels = [];
+								for (var i = 0; i < response.datas.length; i++) {
+									var data = response.datas[i];
+									chartData['총가입량']
+											.push(parseInt(data.chart__total_signup));
+									chartData['적금']
+											.push(parseInt(data.chart_saving_signup));
+									chartData['대출']
+											.push(parseInt(data.chart_loan_signup));
+									labels.push(data.chart_date);
+								}
+								lineChart.data.datasets = Object
+										.keys(chartData)
+										.map(
+												function(key) {
+													return {
+														label : key,
+														data : chartData[key],
+														fill : false,
+														borderColor : key === '총가입량' ? 'rgb(75, 192, 192)'
+																: key === '적금' ? 'rgb(255, 99, 132)'
+																		: 'rgb(180, 40, 132)',
+														lineTension : 0.1
+													};
+												});
+								lineChart.data.labels = labels;
+								lineChart.update();
+							},
+							error : function(xhr, status, error) {
+								console.log('Error:', error);
+							}
+						});
+			}
+
+			function showDepositWithdraw() {
+				$
+						.ajax({
+							url : '/abouthistory',
+							type : 'POST',
+							dataType : 'json',
+							success : function(response) {
+								// 서버에서 받은 데이터를 가공해서 차트 데이터에 적용
+								var chartData = {
+									'보유액' : [],
+									'적금에 대한 지출액' : [],
+									'대출에 의한 수입액' : []
+								};
+								var labels = [];
+								for (var i = 0; i < response.datas.length; i++) {
+									var data = response.datas[i];
+									chartData['보유액']
+											.push(parseInt(data.chart_total_money));
+									chartData['적금에 대한 지출액']
+											.push(parseInt(data.chart_saving_interest));
+									chartData['대출에 의한 수입액']
+											.push(parseInt(data.chart_loan_interest));
+									labels.push(data.chart_date);
+								}
+								lineChart.data.datasets = Object
+										.keys(chartData)
+										.map(
+												function(key) {
+													return {
+														label : key,
+														data : chartData[key],
+														fill : false,
+														borderColor : key === '보유액' ? 'rgb(75, 192, 192)'
+																: key === '적금에 대한 지출액' ? 'rgb(255, 99, 132)'
+																		: 'rgb(180, 40, 132)',
+														lineTension : 0.1
+													};
+												});
+								lineChart.data.labels = labels;
+								lineChart.update();
+							},
+							error : function(xhr, status, error) {
+								console.log('Error:', error);
+							}
+						});
+			}
+
+			// Create initial datasets
+			var initialDataset = [ {
+				label : '가입',
+				data : [ 60, 50, 40, 30, 20, 10, 20, 30, 40, 50, 60, 70 ],
+				fill : false,
+				borderColor : 'rgb(75, 192, 192)',
+				lineTension : 0.1
+			}, {
+				label : '탈퇴',
+				data : [ 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 90, 80 ],
+				fill : false,
+				borderColor : 'rgb(255, 99, 132)',
+				lineTension : 0.1
+			}, {
+				label : '총인원수',
+				data : [ 70, 30, 60, 50, 70, 50, 90, 60, 30, 20, 40, 50 ],
+				fill : false,
+				borderColor : 'rgb(255, 99, 132)',
+				lineTension : 0.1
+			} ];
+
+			var lineChart = new Chart(document.getElementById('line-chart'), {
+				type : 'line',
+				data : {
+					labels : [ '1', '2', '3', '4', '5', '6', '7', '8', '9',
+							'10', '11', '12' ],
+					datasets : initialDataset
+				},
+				options : {
+					responsive : true,
+					title : {
+						display : true,
+						text : 'Line Chart Example'
+					},
+					tooltips : {
+						mode : 'index',
+						intersect : false
+					},
+					hover : {
+						mode : 'nearest',
+						intersect : true
+					},
+					scales : {
+						x : {
+							display : true,
+							title : {
+								display : true,
+								text : 'Month'
+							}
+						},
+						y : {
+							display : true,
+							title : {
+								display : true,
+								text : 'Value'
+							}
+						}
+					}
+				}
+			});
+		</script>
+	</div>
+</body>
+</html>

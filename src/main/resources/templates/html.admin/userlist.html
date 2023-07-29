@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout7}">
+<head>
+<head>
+	<title>YKBBANK</title>
+	<link rel="stylesheet" th:href="@{css/customer.css/checkmail.css}" />
+	<link rel="stylesheet" th:href="@{css/paging.css}" />
+</head>
+<body id="adminmanager-page">
+	<div layout:fragment="content" >
+		<div class="container_next" >
+			<h1>회원 목록</h1>
+			<table border= "1" >
+				<thead>
+					<tr>
+						<th>고객 I  D</th><th>고  객  명</th><th>고객이메일</th><th>고객 등급</th><th>수정</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- 게시물 목록을 동적으로 생성하는 부분 -->
+					<tr th:each="data : ${datas}">
+						<td>[[${data.user_id}]]</td>
+						<td><a th:href="@{/signupmanager(user_no=${data.user_no})}" th:text="|${data.user_name}(클릭)|"></a></td>
+						<td>[[${data.user_email}]]</td>
+						<td>[[${data.user_level}]]</td>
+						<td>
+						<a th:href="@{/update(user_id=${data.user_id})}">수정</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+				<form class="search-form" th:action="@{/userSearch}" method="get">
+					<label for="search-text">name 검색:</label>
+					<input type="text" id="searchValue" name="searchValue">
+					<input type="submit" value="Search">
+				</form>
+				<table class="paging">
+				  <tr style="text-align: center">
+				    <td colspan="5">
+				      <div class="pagination">
+						<a th:class="${page == 1} ? disabled : ''" th:href="@{adminManager(page=1)}">&laquo;</a>
+						<a th:class="${page == 1} ? disabled : ''" th:href="@{adminManager(page=${page - 1})}">&lt;</a>
+						<a th:each="psu : ${#numbers.sequence(page > 2 ? page - 2 : 1, page < pagesu - 2 ? page + 2 : pagesu)}"
+						   th:class="${psu == page} ? active : ''"
+						   th:href="@{adminManager(page=${psu})}"
+						   th:text="${psu}"></a>
+						<a th:class="${page == pagesu} ? disabled : ''" th:href="@{adminManager(page=${page + 1})}">&gt;</a>
+						<a th:class="${page == pagesu} ? disabled : ''" th:href="@{adminManager(page=${pagesu})}">&raquo;</a>
+				      </div>
+				    </td>
+				  </tr>
+			</table>
+			</div>
+		</div>
+	</body>
+</html>

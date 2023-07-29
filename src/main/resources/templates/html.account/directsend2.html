@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout3}">
+<head>
+	<link rel="stylesheet" th:href="@{css/customer.css/mailconsilt.css}" />
+	<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	</head>
+<body id="directsend2-page">
+	<div layout:fragment="content" class="container_next">
+		<form action="directsend3" method="post">
+		<table style="text-align: center;">
+			<tr>
+				<th>출금계좌</th><th>입금은행</th><th>입금계좌</th><th>받는분</th><th>이체금액(원)</th><th>수수료(원)</th>
+			</tr>
+			<tr>
+				<td th:text="${infosend.account_number}"></td>
+				<td th:text="${inforeceive.bank_name}"></td>
+				<td th:text="${inforeceive.account_number}"></td>
+				<td th:text="${inforeceive.user_name}"></td>
+				<td th:text="${sendmoney} + '원'"></td>
+				<td>0</td>
+			</tr>
+		</table>
+		<input type="submit" value="이체실행">
+		<input type="button" value="취소" onclick="history.back()">
+		<input type="hidden" th:name="sendmoney" th:value="*{sendmoney}">
+		<input type="hidden" th:name="take_account_number" th:value="*{inforeceive.account_number}">
+		<input type="hidden" th:name="give_account_number" th:value="*{infosend.account_number}">
+		<input type="hidden" th:name="sendbank" th:value="*{inforeceive.bank_name}">
+		</form>
+	
+	</div>
+</body>
+</html>

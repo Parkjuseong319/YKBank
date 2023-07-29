@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<body>
+** 상품 등록 **<br/>
+<form action="/insert" method="post">
+상품 코드 : <input type="text" name="fin_prdt_code" value="code!@#$"><br/>
+금융회사명 : <input type="text" name="kor_co_nm" value="ykbank" readonly="readonly"><br/>
+상품 유형 : 
+<select name="fin_prdt_type">
+<option value="10">입출금</option>
+<option value="20">예금</option>
+<option value="30">적금</option>
+<option value="40">대출</option>
+</select><br/>
+상 품 명 : <input type="text" name="fin_prdt_nm"><br/>
+기본 금리 : <input type="text" name="basic_rate"><br/>
+최고 한도 : <input type="text" name="max_limit"><br/>
+생성자 : <input type="text" name="created_user_id" value="admin"><br/>
+상품상세설명 : <input type="text" name="prodt_detail"><br/>
+<br/>
+<input type="submit" value="등록"/>
+</form>
+</body>
+</html>

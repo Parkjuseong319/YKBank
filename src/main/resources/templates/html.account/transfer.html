@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layoutAccount}">
+<body>
+<div layout:fragment="content">
+<form class="jotform-form" th:action="@{transfer}" method="post" th:object="${info}" name="form_230873630596463" id="230873630596463" accept-charset="utf-8" autocomplete="on">
+<input type="hidden" name="formID" value="230873630596463" />
+<input type="hidden" id="JWTContainer" value="" />
+<input type="hidden" id="cardinalOrderNumber" value="" />
+<input type="hidden" name="" value="">
+
+  <div role="main" class="form-all">
+    <ul class="form-section page-section">
+      <li id="cid_1" class="form-input-wide" data-type="control_head">
+        <div class="form-header-group  header-default">
+          <div class="header-text httac htvam">
+            <h2 id="header_1" class="form-header" data-component="header">즉시 이체</h2>
+          </div>
+        </div>
+      </li>
+      <li class="form-line" data-type="control_dropdown" id="id_4">
+      <label class="form-label form-label-left form-label-auto" id="label_4" for="input_4"> 출금 계좌 </label>
+      <div id="cid_4" class="form-input"> 
+      <select class="form-dropdown" id="input_4" name="q4_input4" style="width:150px" data-component="dropdown" aria-label="출금 계좌">
+            <option value="">Please Select</option>
+            <option value=""></option>
+            <option value="Other">Other</option>
+          </select> </div>
+      </li>
+      <li class="form-line" data-type="control_number" id="id_14">
+      <label class="form-label form-label-left form-label-auto" id="label_14" for="input_14"> 계좌 비밀번호 </label>
+        <div id="cid_14" class="form-input"> 
+        <input type="password" id="input_14" name="q14_input14" data-type="input-number" class=" form-number-input form-textbox" style="width:100px" size="10" value="" data-component="number" aria-labelledby="label_14" step="any" /> </div>
+      </li>
+      <li class="form-line" data-type="control_dropdown" id="id_17">
+      <label class="form-label form-label-left form-label-auto" id="label_17" for="input_17"> 입금 은행 </label>
+        <div id="cid_17" class="form-input">
+        <select class="form-dropdown" id="input_17" name="q17_input17" style="width:150px" data-component="dropdown" aria-label="입금 은행">
+            <option value="">은행을 선택해 주세요</option>
+            <option value="YKB 은행">YKB 은행</option>
+            <option value="Other">Other</option>
+          </select> </div>
+      </li>
+      <li class="form-line" data-type="control_textbox" id="id_12">
+      <label class="form-label form-label-left form-label-auto" id="label_12" for="input_12"> 입금 계좌 번호 </label>
+        <div id="cid_12" class="form-input"> 
+        <input type="text" id="input_12" name="q12_input12" data-type="input-textbox" class="form-textbox" data-defaultvalue="" size="20" value="" data-component="textbox" aria-labelledby="label_12" /> </div>
+      </li>
+      <li class="form-line" data-type="control_number" id="id_20"><label class="form-label form-label-left form-label-auto" id="label_20" for="input_20"> 이체금액 </label>
+        <div id="cid_20" class="form-input"> <input type="text" id="input_20" name="q20_input20" data-type="input-number" class=" form-number-input form-textbox" data-defaultvalue="" style="width:260px" size="30" value="" data-component="number" aria-labelledby="label_20" step="any" /> </div>
+      </li>
+      <li class="form-line" data-type="control_button" id="id_29">
+        <div id="cid_29" class="form-input-wide">
+          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_29" type="submit" class="form-submit-button submit-button jf-form-buttons jsTest-submitField" data-component="button" data-content="">송금하기</button></div>
+        </div>
+      </li>
+      <li style="display:none">Should be Empty: <input type="text" name="website" value="" /></li>
+    </ul>
+  </div>
+  <script>
+    JotForm.showJotFormPowered = "new_footer";
+  </script>
+  <script>
+    JotForm.poweredByText = "Powered by Jotform";
+  </script><input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="230873630596463" />
+  <script type="text/javascript">
+    var all_spc = document.querySelectorAll("form[id='230873630596463'] .si" + "mple" + "_spc");
+    for (var i = 0; i < all_spc.length; i++)
+    {
+      all_spc[i].value = "230873630596463-230873630596463";
+    }
+  </script>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout7}">
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<!-- <link rel="stylesheet" type="text/css" href="./css/signup.css" />-->
+<link rel="stylesheet" th:href="@{css/mypage.css/signup.css}" />
+</head>
+<body>
+	<div layout:fragment="content">
+		<br/><br/><br/><br/>
+		<form action="logininsert" method="post" class="joinForm" >
+	
+			<h2>회원정보</h2>
+			<div class="textForm">아이디
+				<input name="user_id" type="text" class="id" placeholder="아이디" th:value="${data.user_id}">
+			</div>
+			<div class="textForm">비밀번호
+				<input name="user_passwd" type="password" class="pw"
+					placeholder="비밀번호" th:value="${data.user_passwd}">
+			</div>
+			<div class="textForm">이름
+				<input name="user_name" type="text" class="name" placeholder="이름" th:value="${data.user_name}">
+			</div>
+			<div class="textForm">이메일
+				<input name="user_email" type="text" class="email" placeholder="이메일" th:value="${data.user_email}">
+			</div>
+			<div class="textForm">주민
+				<input name="user_jumin" type="text" class="jumin"
+					placeholder="-포함해서 입력해주세요" th:value="${data.user_jumin}">
+			</div>
+			<div class="textForm">계좌정보
+				<input type="button" value="계좌정보" th:onclick="|location.href='@{accountInfoView(no=${data.user_no},user_name=${data.user_name})}'|">
+				<!-- 
+				<input type="button" value="계좌정보" th:onclick="|location.href='@{view(no=${data.user_no})}'|">
+				 -->
+			</div>
+			<div class="textForm">전화번호
+				<input type="tel" id="phoneNo" name="user_tel" placeholder="전화번호 입력" maxlength="20" th:value="${data.user_tel}">
+			</div>
+			<div class="textForm">성별
+				<input type="tel" th:value="${data.user_gen}">
+			</div>
+			<div class="textForm">zipCode
+				<input type="tel" id="user_zipcode" name="user_zipcode" placeholder="우편번호" th:value="${data.user_zipcode}">
+			</div>
+			<div class="textForm">Addr1
+				<input type="tel" id="user_zipcode" name="user_zipcode" placeholder="우편번호" th:value="${data.user_addr}">
+			</div>
+			<div class="textForm">Addr2
+				<input type="tel" id="user_zipcode" name="user_zipcode" placeholder="우편번호" th:value="${data.user_addr2}">
+			</div>
+			<span id="guide" style="color:#999;display:none"></span>
+			<input type="hidden" id="sample4_detailAddress" placeholder="상세주소">
+			<input type="hidden" id="sample4_extraAddress" placeholder="참고항목">
+	
+		<div class="button-container">
+		  <input type="submit" class="btn" value="수 정 하 기" />
+		  <input type="button" class="btn" onclick="location.href='index'" value="메인으로" />
+		</div>
+		</form>
+	</div>
+</body>
+</html>

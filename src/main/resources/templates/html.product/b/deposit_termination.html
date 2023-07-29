@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	 layout:decorate="~{layouts/layout1}">
+<body>
+<div layout:fragment="content">
+	<form method="post" name="IBF" id="IBF" action="">
+		<input type="hidden" name="signed_msg" title="signed_msg" /> 
+		<input type="hidden" name="해약계좌번호" title="해약계좌번호 " /> 
+		<input type="hidden" name="해약계좌취급회차" title="해약계좌취급회차" /> 
+		<input type="hidden" name="구분코드"title="해약계좌취급회차" /> 
+		<input type="hidden" name="pageFlag"title="화면구분" /> 
+		<input type="hidden" name="firstFlag" title="페이지구분" />
+		<input type="hidden" name="담보대출여부" title="담보대출여부 " /> 
+		<input type="hidden" name="대출계좌번호" title="대출계좌번호 " />
+
+
+		<ul class="step_type">
+			<li class="on"><em><span class="hidden">현재단계</span><strong>1</strong>
+					계좌조회/선택</em></li>
+			<li><span title="해지계좌확인/정보입력">2</span></li>
+			<li><span title="입력확인">3</span></li>
+			<li><span title="해지완료">4</span></li>
+		</ul>
+
+		<div class="box_type1">
+			<ul class="list_type1">
+				<li>해지예상조회후 [해지]버튼을 이용하여 이동하신 고객님께서는 해지계좌번호를 다시 한번 확인하여 선택하기
+					바랍니다.</li>
+
+				<li class="point_orange">청약관련예금(주택청약종합저축,청약예금,청약부금,청약저축)과
+					장기주택마련저축은 추가상담이 필요한 상품이므로 인터넷뱅킹을 통한 해지가 제한됩니다. (창구를 통한 해지는 가능합니다)</li>
+
+
+				<li class="point_orange">2019.2.27일 이전 영업점 창구에서 신규가입한
+					거치식·적립식예금은 창구를 통해 해지 가능하며, 인터넷뱅킹을 통한 해지가 제한됩니다.(단, 2019.2.28일 이후
+					영업점 창구에서 신규가입한 미성년자 명의의 거치식·적립식예금 포함)</li>
+
+				<li class="point_orange">2019.2.27일 이전 인터넷뱅킹, 스타뱅킹, 스마트상담부에서
+					신규가입한 거치식,적립식예금 및 2019.2.28 이후 신규가입한 거치식,적립식예금 또는 입출금이자유로운예금의
+					인터넷뱅킹을 통한 해지 시 본인 휴대전화(당행에 등록된 번호)를 통한 SMS인증 후 해지 가능합니다. (단, 착신전환된
+					휴대전화는 안전한 금융거래를 위해 SMS 인증이 제한됩니다. 가까운 영업점을 방문하시거나
+					스마트상담부(1588-9999)로 문의해 주시기 바랍니다.</li>
+
+				<li>입출금이자유로운예금 해지 시 당행 본인계좌로 입금되며 입금받을 계좌번호가 없거나 각종 자동이체 및 카드
+					결제계좌 등 연결계좌로 사용되고 있을 경우 해지가 제한됩니다.(창구를 통한 해지는 가능합니다.)</li>
+
+
+			</ul>
+		</div>
+
+
+		<div class="accountList" id="depAcc">
+			<div class="accountWrap">
+				<h3>
+					거치식 예금계좌 <a href="#accountFree" class="accountToggle">리스트 감추기</a>
+				</h3>
+				<ul id="accountFree" class="list toggleWrap accountLine">
+
+					<li class="first">조회하실 내역이 없습니다.</li>
+
+				</ul>
+			</div>
+
+			<div class="accountWrap">
+				<h3>
+					적립식 예금계좌 <a href="#accountFree2" class="accountToggle">리스트 감추기</a>
+				</h3>
+				<ul id="accountFree2" class="list toggleWrap accountLine">
+
+
+					<li class="first">조회하실 내역이 없습니다.</li>
+
+				</ul>
+			</div>
+
+
+			<div class="accountWrap">
+				<h3>
+					입출금이자유로운 예금계좌 <a href="#accountFree3" class="accountToggle">리스트
+						감추기</a>
+				</h3>
+				<ul id="accountFree3" class="list toggleWrap accountLine">
+
+
+					<li class="first">
+						<div class="accountNum">155683-232-4576</div>
+						<div class="accountName">
+							YK통장-저축예금 <span class="nick"></span>
+							<div class="accountInfo">
+								<ul>
+									<li><span>신규일</span> <strong> 2017.03.06</strong></li>
+								</ul>
+							</div>
+						</div>
+						<div class="accountSum">
+							<span>00000</span> 원
+						</div>
+						<div class="accountBtn">
+
+						</div>
+					</li>
+
+					<li>
+
+						<div class="accountNum">11231-151-6872</div>
+						<div class="accountName">
+							YK통장 <span class="nick"></span>
+							<div class="accountInfo">
+								<ul>
+									<li><span>신규일</span> <strong> 2017.05.31</strong></li>
+								</ul>
+							</div>
+						</div>
+						<div class="accountSum">
+							<span></span> 원
+						</div>
+						<div class="accountBtn">
+
+							<span class="btn small"> <a href="#"
+								onclick="location.href='deposit_termicheck.html'">해지</a>
+							</span>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+   xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorate="~{layouts/layout4}">
+<head>
+<link href="css/introduceprod.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Document</title>
+ <link th:href="@{/css/introprodt.css}" rel="stylesheet" />
+</head>
+
+<body id="introprodt-page">
+   <div layout:fragment="content">
+   <br/>
+      <div class="introprodt-page">
+      <h2>상품 안내</h2>
+      <div class="main">
+         <input id="tab1" type="radio" name="tabs" checked>
+         <!--디폴트 메뉴-->
+         <label for="tab1">은행 상품 안내</label> 
+<!--             <label for="tab2">대출 상품 안내</label> -->
+         <!-- 첫번째 탭 -->
+         <section id="content1">
+            <dl class="box-guide">
+               <dt class="mb12">금융상품공시란?</dt>
+               <dd>
+                  금융소비자가 금융상품을 이해하고 선택하는 데 유용한 정보를 제공함으로써 금융소비자를 보호하기 위한 제도입니다.<br />금융상품을
+                  가입하기 전 상품공시실의 상품정보, 상품설명서, 약관 등을 상품내용을 꼭 확인하여야 합니다.
+               </dd>
+            </dl>
+
+            <div class="title-area mt30">
+               <h3>은행상품이용가이드</h3>
+            </div>
+            <ul class="list-txt">
+               <li class="no pl0"><em>은행상품의 종류와 성격을 이해하고 자신에게 적합한 상품을
+                     선택하세요!</em><br /> <a href="http://consumer.fss.or.kr" target="_blank"
+                  class="btn-pack btn-type-2 mt5" title="금융감독원 금융소비자정보포털시스템 - 새창열기">금융감독원
+                     금융소비자정보포털시스템</a><br /> <a href="HTTP://FINLIFE.FSS.OR.KR"
+                  target="_blank" class="btn-pack btn-type-2 mt5"
+                  title="금융상품통합비교공시 금융상품한눈에 - 새창열기">금융상품통합비교공시 금융상품한눈에</a></li>
+               <li class="no pl0 mt20"><em>다른 은행의 상품과 비교해 보세요!</em><br /> <a
+                  href="http://www.kfb.or.kr" target="_blank"
+                  class="btn-pack btn-type-2 mt5"
+                  title="전국은행연합회 금리비교 및 수수료비교 - 새창열기">전국은행연합회 금리비교 및 수수료비교</a><br />
+                  <a href="http://www.kfb.or.kr/fp/index.php" target="_blank"
+                  class="btn-pack btn-type-2 mt5" title="전국은행연합회 은행상품통합비교공시 - 새창열기">전국은행연합회
+                     은행상품통합비교공시</a></li>
+
+               <li class="no pl0 mt20"><em>금융계산기를 이용하여 만기예상금액 등을 설계해
+                     보세요!</em><br /> 예금액, 이자방식, 기간, 금리 등을 선택하여 월납부액 또는 만기예상금액을 직접 계산해 볼 수
+                  있습니다.<br /> <a href="http://consumer.fss.or.kr" target="_blank"
+                  class="btn-pack btn-type-2 mt55" title="금융감독원 금융소비자정보포털시스템 - 새창열기">금융감독원
+                     금융소비자정보포털시스템</a></li>
+
+               <li class="no pl0 mt20"><em>등록된 금융상품 모집인과 거래하세요!</em><br />
+                  무등록모집인과 거래시 문제가 발생할 수 있으며 피해구제도 곤란할 수 있으므로 등록여부를 꼭 확인하고 거래하세요.<br />
+                  <a href="http://www.loanconsultant.or.kr" target="_blank"
+                  class="btn-pack btn-type-2 mt5" title="전국은행연합회 대출상담사 조회 - 새창열기">전국은행연합회
+                     대출상담사 조회</a></li>
+
+               <li class="no pl0 mt20"><em>은행상품 구매과정에서 정보를 제공받을 수 있어요!</em><br />
+                  은행상품계약 체결시 단계별로 상품정보를 제공받고 그 중요내용을 설명받을 수 있습니다.
+                  <ul>
+                     <li>계약체결을 권유받을 때 : 계약의 주요내용 설명</li>
+                     <li>소비자가 청약한 경우 : 약관 제공</li>
+                     <li>계약을 체결하는 경우 : 계약서류 교부</li>
+                  </ul></li>
+
+               <li class="no pl0 mt20"><em>예금자보호여부를 확인하세요!</em><br /> <a
+                  href="http://www.kdic.or.kr" target="_blank"
+                  class="btn-pack btn-type-2 mt5" title="예금보험공사 - 새창열기">예금보험공사</a></li>
+
+               <li class="no pl0 mt20"><em>은행과 전국은행연합회, 금융감독원에 상담 및
+                     분쟁조정을 신청할 수 있어요!</em><br />
+                  <ul>
+                     <li>전국은행연합회 민원센터 : tel 3705-5000 / <a
+                        href="http://www.kfb.or.kr" target="_blank"
+                        title="전국은행연합회 민원상담실 - 새창열기">전국은행연합회 민원상담실</a></li>
+                     <li>금융감독원 민원상담 : tel 1332 / <a href="http://www.fcsc.kr"
+                        target="_blank" title="e-금융민원센터 링크 - 새창열기">e-금융민원센터
+                           링크(www.fcsc.kr)</a></li>
+                  </ul></li>
+
+            </ul>
+         </section>
+         <!-- 두번째 탭 -->
+         <!--          <section id="content2"> -->
+         <!--             <p>tab menu2의 내용</p> -->
+         <!--          </section> -->
+
+      </div>
+      </div>
+   </div>
+</body>
+</html>

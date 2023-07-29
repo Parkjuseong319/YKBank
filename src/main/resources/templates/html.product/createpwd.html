@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout4}">
+	<head>
+	<link rel="stylesheet" th:href="@{css/modal.css}" />
+	</head>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<body id="createpwd-page">
+	<div layout:fragment="content">
+		<script type="text/javascript">
+			function checkPwd() { //계좌 비밀번호 일치여부 확인
+				const account_passwd = document
+						.getElementById("account_passwd").value;
+				const confirm_passwd = document
+						.getElementById("confirm_passwd").value;
+
+				// 숫자로 된 4자리의 비밀번호 정규표현식
+				const passwordPattern = /^(?=.*\d)[\d]{4}$/;
+
+				if (passwordPattern.test(account_passwd)
+						&& (account_passwd === confirm_passwd)) {
+					showModal("비밀번호 설정이 완료되었습니다.", "succ");
+					userCloseButton.onclick = function() {
+						frm.submit();
+					}
+
+				} else {
+					showModal("비밀번호를 다시 입력하세요.", "fail");
+				}
+			}
+
+			function showModal(message, check) {
+				var modal = document.createElement("div");
+				modal.className = "modal";
+				modal.innerHTML = '<div class="modal-content">'
+						+ '<div class="modal-header">'
+						+ '<span class="close">&times;</span>' + '</div>'
+						+ '<div class="modal-body">' + '<p>' + message + '</p>'
+						+ '<button id="user_close_btn">확인</button>' + '</div>'
+						+ '</div>';
+
+				var closeButton = modal.querySelector(".close");
+				closeButton.onclick = function() {
+					modal.style.display = "none";
+				}
+
+				var userCloseBtn = modal.querySelector("#user_close_btn");
+				userCloseBtn.onclick = function() {
+					if (check === "succ") {
+						frm.submit();
+					} else {
+						modal.style.display = "none";
+					}
+				}
+
+				document.body.appendChild(modal);
+				modal.style.display = "block";
+			}
+
+			// 키보드로 입력할 때 형식에 맞지 않거나 비밀번호가 다르면 화면에 내용을 출력해주기
+			function checkPwdOnKey() {
+				const account_passwd = document
+						.getElementById("account_passwd").value;
+				const confirm_passwd = document
+						.getElementById("confirm_passwd").value;
+				const confirm_msg = document.getElementById("confirm_msg");
+
+				const passwordPattern = /^(?=.*\d)[\d]{4}$/;
+
+				if (!passwordPattern.test(account_passwd)) {
+					confirm_msg.innerHTML = "비밀번호는 4자리 숫자이어야 합니다.";
+					return;
+				} else if (account_passwd === confirm_passwd) {
+					confirm_msg.innerHTML = "비밀번호 일치";
+				} else {
+					confirm_msg.innerHTML = "비밀번호 불일치";
+					return;
+				}
+			}
+		</script>
+		<div class="container py-5">
+			<div class="container_chgPwd bg-light p-5 rounded col-6 mx-auto">
+				<h3 class="text-center">비밀번호 설정</h3>
+				<br>
+				<form th:action="@{/apply}" method="post" id="frm">
+					<div class="mb-3">
+						<label for="account_passwd" class="form-label">새 비밀번호:</label> <input
+							type="password" name="account_passwd" id="account_passwd"
+							class="form-control" placeholder="비밀번호 입력"
+							onkeyup="checkPwdOnKey()" maxlength="4" required>
+					</div>
+					<div class="mb-3">
+						<label for="confirm_passwd" class="form-label">새 비밀번호 확인:</label>
+						<input type="password" name="confirm_passwd" id="confirm_passwd"
+							class="form-control" placeholder="비밀번호 확인"
+							onkeyup="checkPwdOnKey()" maxlength="4" required>
+						<div id="confirm_msg"></div>
+					</div>
+					<!-- 계좌, 상품 생성에 필요한 데이터 -->
+					<input type="hidden" name="fin_prdt_code"
+						th:value="${data.fin_prdt_code}"> <input type="hidden"
+						name="fin_prdt_type" th:value="${data.fin_prdt_type}"> <input
+						type="hidden" name="user_no" th:value="${userno}"> <input
+						type="hidden" name="rate" th:value="${data.basic_rate}"> <input
+						type="hidden" name="account_number" th:value="${accno}">
+					<th:block th:if="${data.fin_prdt_type.equals('10')}">
+						<input type="hidden" name="account_type"
+							th:value="CURRENT_ACCOUNT">
+					</th:block>
+					<th:block th:if="${data.fin_prdt_type.equals('20')}">
+						<input type="hidden" name="account_type" th:value="TIME_DEPOSIT">
+					</th:block>
+					<!-- --------------------------------------------------------- -->
+					<button type="button" class="btn btn-primary"
+						th:attr="onclick=|checkPwd()|">입력</button>
+				</form>
+			</div>
+		</div>
+		<script>
+			const passwordField = document.getElementById("account_passwd");
+			const confirmPasswordField = document
+					.getElementById("passwd_confirm");
+			const passwordError = document.getElementById("account_passwd");
+			const confirmPasswordError = document
+					.getElementById("passwd_confirm");
+			function validate() {
+				let valid = true;
+
+				if (passwordField.value.trim() === "") {
+					passwordError.innerText = "비밀번호입력해주세요";
+					valid = false;
+				} else if (passwordField.value.length <= 4) {
+					passwordError.innerText = "";
+					valid = false;
+				} else if (!/^\d{4}$/.test(passwordField.value)) {
+					passwordError.innerText = "비밀번호는 숫자로 된 4자리어야 합니다.";
+					valid = false;
+				} else {
+					passwordError.innerText = "";
+				}
+
+				if (confirmPasswordField.value.trim() === "") {
+					confirmPasswordError.innerText = "비밀번호를 다시 입력해주세요";
+					valid = false;
+				} else if (confirmPasswordField.value !== passwordField.value) {
+					confirmPasswordError.innerText = "비밀번호 불일치";
+					valid = false;
+				} else {
+					confirmPasswordError.innerText = "";
+				}
+			}
+
+			passwordField.addEventListener("input", validate);
+			validate();
+		</script>
+		</div>
+</body>
+</html>
